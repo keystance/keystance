@@ -1017,6 +1017,13 @@ void editorDelLineLeft(erow *row){
 }
 
 
+void editorDelLineRight(erow *row){
+  for(int i = 0; i < row->size; i++){
+    editorDelChar();
+  }
+}
+
+
 
 void editorProcessKeypress() {
     static int quit_times = XENON_QUIT_TIMES;
@@ -1055,6 +1062,9 @@ void editorProcessKeypress() {
             break;
         case CTRL_KEY(DEL_LINE_L):
             editorDelLineLeft(E.row);
+            break;
+        case CTRL_KEY(DEL_LINE_R):
+            editorDelLineRight(E.row);
             break;
         case BACKSPACE:
         case CTRL_KEY(HELP):
