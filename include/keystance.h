@@ -15,6 +15,6 @@
 #define true 1
 #define false 0
 
-void on_activate(GtkApplication *app);
+void activate(GtkApplication *app, gpointer user_data);
 
 #endif //KEYSTANCE_H
