@@ -1,2 +1,2 @@
 # keystance
- An open source text editor written.
+ An open source text editor.
