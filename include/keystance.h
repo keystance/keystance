@@ -29,6 +29,7 @@
 #define HELP 'h'
 #define DEL_LINE_L 'd'
 #define DEL_LINE_R 'e'
+#define RUN_CMD 'r'
 
 #define KEYSTANCE_VERSION "0.0.1"
 #define KEYSTANCE_TAB_STOP 8
@@ -46,6 +47,10 @@
 #define NUMBER_COLOR 31
 #define MATCH_COLOR 34
 #define DEFAULT_COLOR 37
+
+//true and false
+#define true 1
+#define false 0
 
 
 enum editorKey {

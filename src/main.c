@@ -919,7 +919,7 @@ char *editorPrompt(char *prompt, void (*callback)(char *, int)) {
     size_t buflen = 0;
     buf[0] = '\0';
 
-    while (1) {
+    while (true) {
 
         editorSetStatusMessage(prompt, buf);
 
@@ -1025,6 +1025,22 @@ void editorDelLineRight(erow *row){
 
 
 
+void editorRunCmd(){
+  char *cmd = (char*)malloc(sizeof(char) * 100);
+
+  if(!cmd){
+    printf("ERROR: Program Halted. Allocation error");
+    exit(1);
+  }
+
+  editorSetStatusMessage("cmd: ");
+
+  fgets(cmd, 100, stdin);
+
+  system(cmd);
+}
+
+
 void editorProcessKeypress() {
     static int quit_times = KEYSTANCE_QUIT_TIMES;
     int c = editorReadKey();
@@ -1050,28 +1066,39 @@ void editorProcessKeypress() {
         case CTRL_KEY(SAVE):
             editorSave();
             break;
+
             case HOME_KEY:
             E.cx = 0;
             break;
+
         case END_KEY:
             if (E.cy < E.numrows)
                 E.cx = E.row[E.cy].size;
             break;
+
         case CTRL_KEY(FIND):
             editorFind();
             break;
+
         case CTRL_KEY(DEL_LINE_L):
             editorDelLineLeft(E.row);
             break;
+
         case CTRL_KEY(DEL_LINE_R):
             editorDelLineRight(E.row);
             break;
+
+        case CTRL_KEY(RUN_CMD):
+            editorRunCmd();
+            break;
+
         case BACKSPACE:
         case CTRL_KEY(HELP):
         case DEL_KEY:
             if (c == DEL_KEY) editorMoveCursor(ARROW_RIGHT);
             editorDelChar();
             break;
+
         case PAGE_UP:
         case PAGE_DOWN:
         {
@@ -1086,18 +1113,22 @@ void editorProcessKeypress() {
             editorMoveCursor(c == PAGE_UP ? ARROW_UP : ARROW_DOWN);
         }
         break;
+
         case ARROW_UP:
         case ARROW_DOWN:
         case ARROW_LEFT:
         case ARROW_RIGHT:
             editorMoveCursor(c);
             break;
+
         case CTRL_KEY('l'):
         case '\x1b':
             break;
+
         default:
             editorInsertChar(c);
         break;
+
     }
     quit_times = KEYSTANCE_QUIT_TIMES;
 }
@@ -1140,7 +1171,7 @@ int main(int argc, char *argv[]) {
     editorSetStatusMessage(
         "HELP: Ctrl-S = save | Ctrl-Q = quit | Ctrl-F = find | Ctrl-D = delete line");
 
-    while (1) {
+    while (true) {
         editorRefreshScreen();
         editorProcessKeypress();
     }
