@@ -1010,6 +1010,11 @@ void editorMoveCursor(int key) {
 
 
 
+void editorDelLineLeft(erow *row){
+  for(int i = row->size; i > 0; i--){
+    editorDelChar();
+  }
+}
 
 
 
@@ -1021,7 +1026,7 @@ void editorProcessKeypress() {
         case '\r':
         editorInsertNewline();
         break;
-        case CTRL_KEY('q'):
+        case CTRL_KEY(QUIT):
 
             if (E.dirty && quit_times > 0) {
                 editorSetStatusMessage("WARNING! File has unsaved changes. "
@@ -1035,7 +1040,7 @@ void editorProcessKeypress() {
 
             exit(0);
             break;
-        case CTRL_KEY('s'):
+        case CTRL_KEY(SAVE):
             editorSave();
             break;
             case HOME_KEY:
@@ -1045,11 +1050,14 @@ void editorProcessKeypress() {
             if (E.cy < E.numrows)
                 E.cx = E.row[E.cy].size;
             break;
-        case CTRL_KEY('f'):
+        case CTRL_KEY(FIND):
             editorFind();
             break;
+        case CTRL_KEY(DEL_LINE_L):
+            editorDelLineLeft(E.row);
+            break;
         case BACKSPACE:
-        case CTRL_KEY('h'):
+        case CTRL_KEY(HELP):
         case DEL_KEY:
             if (c == DEL_KEY) editorMoveCursor(ARROW_RIGHT);
             editorDelChar();
@@ -1120,7 +1128,7 @@ int main(int argc, char *argv[]) {
     }
 
     editorSetStatusMessage(
-        "HELP: Ctrl-S = save | Ctrl-Q = quit | Ctrl-F = find");
+        "HELP: Ctrl-S = save | Ctrl-Q = quit | Ctrl-F = find | Ctrl-D = delete line");
 
     while (1) {
         editorRefreshScreen();
