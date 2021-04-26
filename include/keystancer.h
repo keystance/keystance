@@ -124,7 +124,7 @@ char *C_HL_keywords[] = {
   "protected", "try", "virtual", "mutable", "inline", "template", "this",
   "delete", "typeid", "typename", "operator", "explicit", "new",
   "static_cast", "catch", "class",
-  "int|", "long|", "double|", "float|", "char|", "unsigned|", "signed|",
+  "int|", "long|", "double|", "float|", "char|", "unsigned|", "signed|", "short|",
   "void|", NULL
 };
 
