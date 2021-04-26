@@ -1,4 +1,4 @@
-#include "../include/keystancer.h"
+#include "../include/keystance.h"
 
 
 void editorSetStatusMessage(const char *fmt, ...);
@@ -306,7 +306,7 @@ int editorRowCxToRx(erow *row, int cx) {
 
     for (j = 0; j < cx; j++) {
         if (row->chars[j] == '\t')
-            rx += (XENON_TAB_STOP - 1) - (rx % XENON_TAB_STOP);
+            rx += (KEYSTANCE_TAB_STOP - 1) - (rx % KEYSTANCE_TAB_STOP);
         rx++;
     }
     return rx;
@@ -319,7 +319,7 @@ int editorRowRxToCx(erow *row, int rx) {
 
     for (cx = 0; cx < row->size; cx++) {
         if (row->chars[cx] == '\t')
-        cur_rx += (XENON_TAB_STOP - 1) - (cur_rx % XENON_TAB_STOP);
+        cur_rx += (KEYSTANCE_TAB_STOP - 1) - (cur_rx % KEYSTANCE_TAB_STOP);
         cur_rx++;
 
         if (cur_rx > rx) return cx;
@@ -337,7 +337,7 @@ void editorUpdateRow(erow *row) {
         if (row->chars[j] == '\t') tabs++;
 
     free(row->render);
-    row->render = malloc(row->size + tabs*(XENON_TAB_STOP - 1) + 1);
+    row->render = malloc(row->size + tabs*(KEYSTANCE_TAB_STOP - 1) + 1);
 
     int idx = 0;
 
@@ -345,7 +345,7 @@ void editorUpdateRow(erow *row) {
 
         if (row->chars[j] == '\t') {
         row->render[idx++] = ' ';
-        while (idx % XENON_TAB_STOP != 0) row->render[idx++] = ' ';
+        while (idx % KEYSTANCE_TAB_STOP != 0) row->render[idx++] = ' ';
         }
 
         else {
@@ -762,7 +762,7 @@ void editorDrawRows(struct abuf *ab) {
                 char welcome[80];
                 int welcomelen = snprintf(welcome, sizeof(welcome),
 
-                "Xenon editor -- version %s", XENON_VERSION);
+                "KEYSTANCE editor -- version %s", KEYSTANCE_VERSION);
                 if (welcomelen > E.screencols) welcomelen = E.screencols;
                 int padding = (E.screencols - welcomelen) / 2;
 
@@ -1026,7 +1026,7 @@ void editorDelLineRight(erow *row){
 
 
 void editorProcessKeypress() {
-    static int quit_times = XENON_QUIT_TIMES;
+    static int quit_times = KEYSTANCE_QUIT_TIMES;
     int c = editorReadKey();
 
     switch (c) {
@@ -1099,7 +1099,7 @@ void editorProcessKeypress() {
             editorInsertChar(c);
         break;
     }
-    quit_times = XENON_QUIT_TIMES;
+    quit_times = KEYSTANCE_QUIT_TIMES;
 }
 
 

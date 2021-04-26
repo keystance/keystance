@@ -22,15 +22,17 @@
 
 //DEFINES
 #define CTRL_KEY(k) ((k) & 0x1f)
+
 #define FIND 'f'
 #define SAVE 's'
 #define QUIT 'q'
 #define HELP 'h'
 #define DEL_LINE_L 'd'
 #define DEL_LINE_R 'e'
-#define XENON_VERSION "0.0.1"
-#define XENON_TAB_STOP 8
-#define XENON_QUIT_TIMES 3
+
+#define KEYSTANCE_VERSION "0.0.1"
+#define KEYSTANCE_TAB_STOP 8
+#define KEYSTANCE_QUIT_TIMES 3
 #define HL_HIGHLIGHT_NUMBERS (1<<0)
 #define HLDB_ENTRIES (sizeof(HLDB) / sizeof(HLDB[0]))
 #define HL_HIGHLIGHT_STRINGS (1<<1)
