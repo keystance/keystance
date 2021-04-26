@@ -14,6 +14,8 @@
 
 #define true 1
 #define false 0
+#define HEIGHT 1500
+#define LENGTH 1000
 
 void activate(GtkApplication *app, gpointer user_data);
 
