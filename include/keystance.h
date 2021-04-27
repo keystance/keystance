@@ -6,6 +6,8 @@
 #define _BSD_SOURCE
 #define _GNU_SOURCE
 
+
+
 #include <ctype.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -19,12 +21,12 @@
 #include <time.h>
 #include <unistd.h>
 
+
 #include "../analyzer/analyze.h"
-#include "../analyzer/include/token.h"
 #include "../analyzer/include/parser.h"
+#include "../analyzer/include/token.h"
 #include "../keywords/C/keywords.h"
 #include "../errors/C/Cerrors.h"
-
 
 
 //DEFINES

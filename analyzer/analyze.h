@@ -6,7 +6,6 @@
 #include "./include/token.h"
 #include "./include/util.h"
 #include "../errors/C/Cerrors.h"
-#include "../include/keystance.h"
 
 
 enum _AnalyzeStatus{
