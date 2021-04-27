@@ -5,8 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*#include "./parser.h"
-#include "./token.h"
+/*#include "./include/parser.h"
+#include "./include/token.h"
+#include "../errors/errors.h"
 */
 
 enum _AnalyzeStatus{
