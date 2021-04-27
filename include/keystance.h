@@ -30,6 +30,7 @@
 #define DEL_LINE_L 'd'
 #define DEL_LINE_R 'e'
 #define RUN_CMD 'r'
+#define INSERT_END 'a'
 
 #define KEYSTANCE_VERSION "0.0.1"
 #define KEYSTANCE_TAB_STOP 8

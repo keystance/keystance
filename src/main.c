@@ -1043,6 +1043,13 @@ void editorRunCmd(){
 }
 
 
+void editorInsertEnd(erow *row){
+  for(int i = 0; i < row->size; i++){
+    editorMoveCursor(ARROW_RIGHT);
+  }
+}
+
+
 void editorProcessKeypress() {
     static int quit_times = KEYSTANCE_QUIT_TIMES;
     int c = editorReadKey();
@@ -1092,6 +1099,10 @@ void editorProcessKeypress() {
 
         case CTRL_KEY(RUN_CMD):
             editorRunCmd();
+            break;
+
+        case CTRL_KEY(INSERT_END):
+            editorInsertEnd(E.row);
             break;
 
         case BACKSPACE:
