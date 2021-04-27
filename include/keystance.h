@@ -18,6 +18,8 @@
 #include <time.h>
 #include <unistd.h>
 
+#include "./analyze.h"
+
 
 
 //DEFINES
