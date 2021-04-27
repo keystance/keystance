@@ -13,10 +13,10 @@
   * Syntax error checking in C
 
  ### What is keystance built with ?
-  * Nvim
+  * NeoVim
   * Vim
   * Atom
-  * Vscode
+  * VsCode
   * C
   * gcc
 
