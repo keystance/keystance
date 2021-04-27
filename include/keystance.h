@@ -1,6 +1,7 @@
 #ifndef KEYSTANCER_H
 #define KEYSTANCER_H
 
+
 #define _DEFAULT_SOURCE
 #define _BSD_SOURCE
 #define _GNU_SOURCE
@@ -22,7 +23,7 @@
 #include "../analyzer/include/token.h"
 #include "../analyzer/include/parser.h"
 #include "../keywords/C/keywords.h"
-#include "../errors//Cerrors.h"
+#include "../errors/C/Cerrors.h"
 
 
 

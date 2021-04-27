@@ -1,14 +1,12 @@
 #ifndef ANALYZE_H
 #define ANALYZE_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 #include "./include/parser.h"
 #include "./include/token.h"
 #include "./include/util.h"
 #include "../errors/C/Cerrors.h"
+#include "../include/keystance.h"
 
 
 enum _AnalyzeStatus{

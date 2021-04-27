@@ -1,10 +1,12 @@
 #ifndef PARSER_H
 #define PARSER_H
 
+#include "../../include/keystance.h"
 #include "./token.h"
 #include "./util.h"
+#include "../analyze.h"
 #include "../../errors/C/Cerrors.h"
-#include "../../keywords/C/keywords.h"
+
 
 
 /*C*/
