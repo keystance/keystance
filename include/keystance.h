@@ -87,7 +87,7 @@ enum editorHighlight {
 //DATA
 
 
-struct termios orig_termios;
+
 
 
 struct editorSyntax {
@@ -129,34 +129,7 @@ struct editorConfig {
     struct termios orig_termios;
 };
 
-struct editorConfig E;
 
-
-//FILETYPES
-char *C_HL_extensions[] = { ".c", ".h", ".cpp", ".py", NULL };
-
-char *C_HL_keywords[] = {
-  "switch", "#include", "if", "while", "for", "break", "continue", "return", "else",
-  "struct", "union", "typedef", "static", "enum", "class", "case",
-  "auto", "const", "extern", "goto", "register", "sizeof", "asm",
-  "namespace", "std", "using", "false", "true", "private", "public",
-  "protected", "try", "virtual", "mutable", "inline", "template", "this",
-  "delete", "typeid", "typename", "operator", "explicit", "new",
-  "static_cast", "catch", "class", "%s", "%d", "%i", "%f", "%ld", "%%",
-  "int|", "long|", "double|", "float|", "char|", "unsigned|", "signed|", "short|",
-  "void|", NULL
-};
-
-
-struct editorSyntax HLDB[] = {
-  {
-    "c",
-    C_HL_extensions,
-    C_HL_keywords,
-    "//", "/*", "*/",
-    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
-  },
-};
 
 
 

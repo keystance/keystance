@@ -1,10 +1,36 @@
 #include "../include/keystance.h"
 
 
-void editorSetStatusMessage(const char *fmt, ...);
-void editorRefreshScreen();
-char *editorPrompt(char *prompt, void (*callback)(char *, int));
+struct termios orig_termios;
 
+struct editorConfig E;
+
+
+//FILETYPES
+char *C_HL_extensions[] = { ".c", ".h", ".cpp", ".py", NULL };
+
+char *C_HL_keywords[] = {
+  "switch", "#include", "if", "while", "for", "break", "continue", "return", "else",
+  "struct", "union", "typedef", "static", "enum", "class", "case",
+  "auto", "const", "extern", "goto", "register", "sizeof", "asm",
+  "namespace", "std", "using", "false", "true", "private", "public",
+  "protected", "try", "virtual", "mutable", "inline", "template", "this",
+  "delete", "typeid", "typename", "operator", "explicit", "new",
+  "static_cast", "catch", "class", "%s", "%d", "%i", "%f", "%ld", "%%",
+  "int|", "long|", "double|", "float|", "char|", "unsigned|", "signed|", "short|",
+  "void|", NULL
+};
+
+
+struct editorSyntax HLDB[] = {
+  {
+    "c",
+    C_HL_extensions,
+    C_HL_keywords,
+    "//", "/*", "*/",
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+};
 
 //TERMINAL
 
@@ -1181,8 +1207,16 @@ void initEditor() {
 
 int main(int argc, char *argv[]) {
 
-    if(strcmp(argv[1], "-a") == 0){
-      analyze_file(argv[2]);
+    //for C files
+    if(strcmp(argv[1], "-ac") == 0){
+      char *source = read_file(argv[2]);
+      TokenList tokens;
+      token_list_create(&tokens, 1);
+
+      Cerrors cstat = c_parser_start(&tokens, source);
+      if(cstat != NO_ERROR){
+        return 1;
+      }
 
       return 0;
     }
