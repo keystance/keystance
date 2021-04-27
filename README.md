@@ -3,7 +3,13 @@
 
 
  ### How to contribute
-  There's only one source file and one header file you know how it goes.
+  You can open a pull request or an issue if you've found a bug or if you have an idea for a new feature.
+
+ ### How to read the codebase
+  Inside the include folder there is the keystance.h file. This is where all of the defines and includes are located
+  In the src folder there is the main.c file where all the code for the actual text editor is located
+  In the analyzer folder is the source code for the syntax error analyzer.
+  In the errors folder are all the errors the analyzer can throw at you.
 
  ### What I want to implement
   * Syntax error checking in C.
