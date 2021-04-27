@@ -136,7 +136,7 @@ char *C_HL_keywords[] = {
   "namespace", "std", "using", "false", "true", "private", "public",
   "protected", "try", "virtual", "mutable", "inline", "template", "this",
   "delete", "typeid", "typename", "operator", "explicit", "new",
-  "static_cast", "catch", "class",
+  "static_cast", "catch", "class", "%s", "%d", "%i", "%f", "%ld", "%%",
   "int|", "long|", "double|", "float|", "char|", "unsigned|", "signed|", "short|",
   "void|", NULL
 };
