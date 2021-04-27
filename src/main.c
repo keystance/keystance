@@ -1182,7 +1182,9 @@ void initEditor() {
 int main(int argc, char *argv[]) {
 
     if(strcmp(argv[1], "-a") == 0){
-
+      analyze_file(argv[2]);
+      
+      return 0;
     }
 
     enableRawMode();
