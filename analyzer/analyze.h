@@ -7,7 +7,8 @@
 
 #include "./include/parser.h"
 #include "./include/token.h"
-#include "../errors/errors.h"
+#include "./include/util.h"
+#include "../errors/C/Cerrors.h"
 
 
 enum _AnalyzeStatus{

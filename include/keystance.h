@@ -19,6 +19,10 @@
 #include <unistd.h>
 
 #include "../analyzer/analyze.h"
+#include "../analyzer/include/token.h"
+#include "../analyzer/include/parser.h"
+#include "../keywords/C/keywords.h"
+#include "../errors//Cerrors.h"
 
 
 
