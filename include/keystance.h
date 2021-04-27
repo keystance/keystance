@@ -18,7 +18,7 @@
 #include <time.h>
 #include <unistd.h>
 
-#include "./analyze.h"
+#include "../analyzer/analyze.h"
 
 
 

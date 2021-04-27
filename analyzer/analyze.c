@@ -1,4 +1,4 @@
-#include "../include/analyze.h"
+#include "./analyze.h"
 
 
 AnalyzeStatus analyze_file(const char *path){

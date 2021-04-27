@@ -1,5 +1,5 @@
 CC = gcc
-SRC = ${wildcard ./src/*.c}
+SRC = ${wildcard ./src/*.c ./analyzer/*.c ./errors/*.c}
 EXEC = ./kst
 
 all: ./src/main.c
