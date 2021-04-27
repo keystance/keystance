@@ -1050,6 +1050,13 @@ void editorInsertEnd(erow *row){
 }
 
 
+void editorInsertStart(erow *row){
+  for(int i = row->size; i > 0; i--){
+    editorMoveCursor(ARROW_LEFT);
+  }
+}
+
+
 void editorProcessKeypress() {
     static int quit_times = KEYSTANCE_QUIT_TIMES;
     int c = editorReadKey();
