@@ -12,6 +12,14 @@
  ### What I'm currently workin on
   * Syntax error checking in C
 
+ ### What is keystance built with ?
+  * Nvim
+  * Vim
+  * Atom
+  * Vscode
+  * C
+  * gcc
+
  ### Why should you use keystance ?
   I'm going to be real here. There isn't any reason to use keystance at all because there are already a lot of text editors out there.
 
