@@ -1024,7 +1024,6 @@ void editorDelLineRight(erow *row){
 }
 
 
-
 void editorRunCmd(){
   char *cmd = (char*)malloc(sizeof(char) * 100);
 
@@ -1033,11 +1032,14 @@ void editorRunCmd(){
     exit(1);
   }
 
-  editorSetStatusMessage("cmd: ");
+  cmd = editorPrompt("cmd: ", NULL);
 
-  fgets(cmd, 100, stdin);
-
-  system(cmd);
+  if(cmd == NULL){
+    editorSetStatusMessage("No command was entered");
+  }
+  else{
+    system(cmd);
+  }
 }
 
 
