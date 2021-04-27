@@ -22,11 +22,7 @@
 #include <unistd.h>
 
 
-#include "../analyzer/analyze.h"
-#include "../analyzer/include/parser.h"
-#include "../analyzer/include/token.h"
-#include "../keywords/C/keywords.h"
-#include "../errors/C/Cerrors.h"
+#include "../analyzer/include/analyzer.h"
 
 
 //DEFINES

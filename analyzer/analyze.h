@@ -2,10 +2,8 @@
 #define ANALYZE_H
 
 
-#include "./include/parser.h"
-#include "./include/token.h"
-#include "./include/util.h"
-#include "../errors/C/Cerrors.h"
+
+#include "./include/analyzer.h"
 
 
 enum _AnalyzeStatus{

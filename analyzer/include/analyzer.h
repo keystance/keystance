@@ -1,9 +1,25 @@
-#ifndef TOKEN_H
-#define TOKEN_H
+#ifndef ANALYZER_H
+#define ANALYZER_H
 
+#include "./util.h"
+#include "../analyze.h"
+#include "../../errors/C/Cerrors.h"
+#include "../../keywords/C/keywords.h"
 #include "../../include/keystance.h"
 
+struct _Token{
+  int data;
+  int type;
+  int line;
+};
+typedef struct _Token Token;
 
+struct _TokenList{
+  Token **data;
+  int ptr;
+  int size;
+};
+typedef struct _TokenList TokenList;
 
 enum _TokenType{
   KEYWORD,
@@ -27,19 +43,7 @@ typedef enum _TokenType TokenType;
 typedef enum _TokenOP TokenOP;
 */
 
-struct _Token{
-  int data;
-  int type;
-  int line;
-};
-typedef struct _Token Token;
 
-struct _TokenList{
-  Token **data;
-  int ptr;
-  int size;
-};
-typedef struct _TokenList TokenList;
 
 Token *token_create(int type, int data, int line);
 void token_destory(Token *tok);
@@ -52,4 +56,12 @@ Token* token_list_get(TokenList* list, int index);
 void token_list_destroy(TokenList* list);
 
 
-#endif //TOKEN_H
+
+
+
+
+/*C*/
+Cerrors c_parser_start(TokenList *list, const char *source);
+Cerrors c_check_semicolon(const char *buf);
+
+#endif //ANALYZER_H
