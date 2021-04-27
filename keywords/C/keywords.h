@@ -1,6 +1,7 @@
 #ifndef KEYWORDS_H
 #define KEYWORDS_H
 
+/*KEYWORDS*/
 #define AUTO 0
 #define BREAK 1
 #define CASE 2
@@ -33,6 +34,17 @@
 #define VOID 29
 #define VOLATILE 30
 #define WHILE 31
+
+
+/*Others*/
+
+#define SEMI 32
+#define COMM 33
+#define PLUS 34
+#define MINUS 35
+#define DIVIDE 36
+#define MULTIPLY 37
+#define MODULUS 38
 
 
 #endif //KEYWORDS_H

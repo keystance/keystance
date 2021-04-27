@@ -3,8 +3,7 @@
 
 #include "../../include/keystance.h"
 
-#define SEMI 32
-#define COMM 33
+
 
 enum _TokenType{
   KEYWORD,
@@ -18,7 +17,7 @@ enum _TokenType{
 typedef enum _TokenType TokenType;
 
 
-enum _TokenOp{
+/*enum _TokenOp{
   PLUS,
   MINUS,
   MULTIPLY,
@@ -26,7 +25,7 @@ enum _TokenOp{
   MODULUS
 };
 typedef enum _TokenOP TokenOP;
-
+*/
 
 struct _Token{
   int data;
