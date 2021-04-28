@@ -22,7 +22,6 @@
 #include <unistd.h>
 #include <stdint.h>
 
-#include "../analyzer/include/analyzer.h"
 
 
 //DEFINES

@@ -1330,7 +1330,7 @@ void initEditor() {
 }
 
 
-int c_analyze(const char *path){
+/*int c_analyze(const char *path){
   char *source = read_file(path);
   TokenList tokens;
   token_list_create(&tokens, 1);
@@ -1341,16 +1341,11 @@ int c_analyze(const char *path){
   }
 
   return 0;
-}
+}*/
 
 
 int main(int argc, char *argv[]) {
 
-    //for C files
-    if(strcmp(argv[1], "-ac") == 0){
-      c_analyze(argv[2]);
-      return 0;
-    }
 
     enableRawMode();
 
