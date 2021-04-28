@@ -1131,6 +1131,32 @@ void editorCharLeft(){
 }
 
 
+void editorMoveWordForward(erow *row){
+    for(int i = row->size; row->chars[i] != ' '; i++){
+        editorMoveCursor(ARROW_RIGHT);
+    }
+}
+
+
+void editorMoveWordBack(erow *row){
+
+}
+
+
+void editorMoveStart(int numrows){
+    for(int i = numrows; i > 0; i--){
+        editorMoveCursor(ARROW_UP);
+    }
+}
+
+
+void editorMoveEnd(int numrows){
+    for(int i = 0; i < numrows; i++){
+        editorMoveCursor(ARROW_DOWN);
+    }
+}
+
+
 void editorProcessKeypress() {
     static int quit_times = KEYSTANCE_QUIT_TIMES;
     int c = editorReadKey();
@@ -1207,6 +1233,21 @@ void editorProcessKeypress() {
             editorCharLeft();
             break;
 
+        case CTRL_KEY(MOVE_WORD_FOR):
+            editorMoveWordForward(E.row);
+            break;
+
+        case CTRL_KEY(MOVE_WORD_BACK):
+            editorMoveWordBack(E.row);
+            break;
+
+        case CTRL_KEY(MOVE_START):
+            editorMoveStart(E.numrows);
+            break;
+
+        case CTRL_KEY(MOVE_END):
+            editorMoveEnd(E.numrows);
+            break;
 
         case BACKSPACE:
         //case CTRL_KEY(HELP):

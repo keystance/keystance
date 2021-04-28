@@ -26,8 +26,11 @@
 
 
 //DEFINES
+// The CTRL KEY for keyboard shortcuts
 #define CTRL_KEY(k) ((k) & 0x1f)
 
+
+/*All keyboard shortcuts*/
 #define FIND 'f'
 #define SAVE 's'
 #define QUIT 'q'
@@ -42,8 +45,14 @@
 #define LINE_DOWN 'j'
 #define CHAR_RIGHT 'l'
 #define CHAR_LEFT 'h'
+#define MOVE_WORD_FOR 'z'
+#define MOVE_WORD_BACK 'x'
+#define MOVE_START 't'
+#define MOVE_END 'c'
 
-#define KEYSTANCE_VERSION "0.0.1"
+
+/*Editor related stuff*/
+#define KEYSTANCE_VERSION "0.2"
 #define KEYSTANCE_TAB_STOP 4
 #define KEYSTANCE_QUIT_TIMES 3
 #define HL_HIGHLIGHT_NUMBERS (1<<0)
