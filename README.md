@@ -23,6 +23,7 @@
   * Vim
   * Atom
   * VsCode
+  * KeyStance
   * C
   * gcc
 
