@@ -20,7 +20,7 @@
 #include <termios.h>
 #include <time.h>
 #include <unistd.h>
-
+#include <stdint.h>
 
 #include "../analyzer/include/analyzer.h"
 
@@ -36,6 +36,10 @@
 #define DEL_LINE_R 'e'
 #define RUN_CMD 'r'
 #define INSERT_END 'a'
+//#define PAGE_UP 'p'
+#define SPLIT 'n'
+#define SHOW_L_NUMBER 'w'
+
 
 #define KEYSTANCE_VERSION "0.0.1"
 #define KEYSTANCE_TAB_STOP 4
@@ -58,6 +62,11 @@
 //true and false
 #define true 1
 #define false 0
+
+
+//Change this to true if you want line numbers to appear everytime you run the program.
+#define LINE_NUMBERS false
+
 
 
 enum editorKey {

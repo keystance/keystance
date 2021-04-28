@@ -776,6 +776,23 @@ void editorScroll() {
 
 
 
+void editorDrawLineNumbers(struct abuf *ab){
+    uint32_t line = 0;
+    for(line; line < E.numrows; line++){
+        char *str_line = (char*)malloc(sizeof(char) * 20);
+        int str_line_len = strlen(str_line);
+
+
+        if(!str_line){
+            die("str_line");
+        }
+
+        sprintf(str_line, "%d", line);
+
+        abAppend(ab, str_line, str_line_len);
+    }
+}
+
 
 
 void editorDrawRows(struct abuf *ab) {
@@ -856,6 +873,7 @@ void editorDrawRows(struct abuf *ab) {
 
 
 
+
 void editorDrawStatusBar(struct abuf *ab) {
     abAppend(ab, "\x1b[7m", 4);
     char status[80], rstatus[80];
@@ -903,6 +921,7 @@ void editorDrawMessageBar(struct abuf *ab) {
 
 
 
+
 void editorRefreshScreen() {
     editorScroll();
     struct abuf ab = ABUF_INIT;
@@ -911,6 +930,9 @@ void editorRefreshScreen() {
     abAppend(&ab, "\x1b[H", 3);
 
     editorDrawRows(&ab);
+    if(LINE_NUMBERS == true){
+        editorDrawLineNumbers(&ab);
+    }
     editorDrawStatusBar(&ab);
     editorDrawMessageBar(&ab);
     char buf[32];
@@ -943,6 +965,10 @@ char *editorPrompt(char *prompt, void (*callback)(char *, int)) {
 
     size_t bufsize = 128;
     char *buf = malloc(bufsize);
+
+    if(!buf){
+        die("buf");
+    }
 
     size_t buflen = 0;
     buf[0] = '\0';
@@ -1085,9 +1111,12 @@ void editorInsertStart(erow *row){
 }
 
 
+
+
 void editorProcessKeypress() {
     static int quit_times = KEYSTANCE_QUIT_TIMES;
     int c = editorReadKey();
+    struct abuf ab = ABUF_INIT;
 
     switch (c) {
         case '\r':
@@ -1138,6 +1167,10 @@ void editorProcessKeypress() {
 
         case CTRL_KEY(INSERT_END):
             editorInsertEnd(E.row);
+            break;
+
+        case CTRL_KEY(SHOW_L_NUMBER):
+            editorDrawLineNumbers(&ab);
             break;
 
         case BACKSPACE:
@@ -1233,6 +1266,10 @@ int main(int argc, char *argv[]) {
     if (argc >= 2) {
         editorOpen(argv[1]);
     }
+
+    /*if(LINE_NUMBERS == true){
+        editorDrawLineNumbers();
+    }*/
 
     editorSetStatusMessage(
         "HELP: Ctrl-S = save | Ctrl-Q = quit | Ctrl-F = find | Ctrl-D = delete line");
