@@ -1202,23 +1202,25 @@ void initEditor() {
 }
 
 
+int c_analyze(const char *path){
+  char *source = read_file(path);
+  TokenList tokens;
+  token_list_create(&tokens, 1);
 
+  Cerrors cstat = c_parser_start(&tokens, source);
+  if(cstat != NO_ERROR){
+    return 1;
+  }
+
+  return 0;
+}
 
 
 int main(int argc, char *argv[]) {
 
     //for C files
     if(strcmp(argv[1], "-ac") == 0){
-      char *source = read_file(argv[2]);
-      TokenList tokens;
-      token_list_create(&tokens, 1);
-
-      Cerrors cstat = c_parser_start(&tokens, source);
-      if(cstat != NO_ERROR){
-        return 1;
-      }
-
-      return 0;
+      c_analyze(argv[2]);
     }
 
     enableRawMode();
