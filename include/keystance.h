@@ -39,7 +39,8 @@
 //#define PAGE_UP 'p'
 #define SPLIT 'n'
 #define SHOW_L_NUMBER 'w'
-
+#define LINE_UP 'k'
+#define LINE_DOWN 'j'
 
 #define KEYSTANCE_VERSION "0.0.1"
 #define KEYSTANCE_TAB_STOP 4

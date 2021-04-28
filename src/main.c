@@ -20,7 +20,7 @@ char *C_HL_keywords[] = {
   "delete", "typeid", "typename", "operator", "explicit", "new",
   "static_cast", "catch", "class", "%s", "%d", "%i", "%f", "%ld", "%%",
   "int|", "long|", "double|", "float|", "char|", "unsigned|", "signed|", "short|",
-  "void|", NULL
+  "void|", "NULL",  NULL
 };
 
 
@@ -1111,6 +1111,14 @@ void editorInsertStart(erow *row){
 }
 
 
+void editorLineUp(){
+    editorMoveCursor(ARROW_UP);
+}
+
+
+void editorLineDown(){
+    editorMoveCursor(ARROW_DOWN);
+}
 
 
 void editorProcessKeypress() {
@@ -1171,6 +1179,14 @@ void editorProcessKeypress() {
 
         case CTRL_KEY(SHOW_L_NUMBER):
             editorDrawLineNumbers(&ab);
+            break;
+
+        case CTRL_KEY(LINE_UP):
+            editorLineUp();
+            break;
+
+        case CTRL_KEY(LINE_DOWN):
+            editorLineDown();
             break;
 
         case BACKSPACE:
