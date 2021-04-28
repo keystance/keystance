@@ -38,12 +38,13 @@
 #define INSERT_END 'a'
 
 #define KEYSTANCE_VERSION "0.0.1"
-#define KEYSTANCE_TAB_STOP 8
+#define KEYSTANCE_TAB_STOP 4
 #define KEYSTANCE_QUIT_TIMES 3
 #define HL_HIGHLIGHT_NUMBERS (1<<0)
 #define HLDB_ENTRIES (sizeof(HLDB) / sizeof(HLDB[0]))
 #define HL_HIGHLIGHT_STRINGS (1<<1)
 
+#define clear() system("clear");
 
 //COLORS
 #define ML_COMMENT_COLOR 37

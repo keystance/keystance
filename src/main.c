@@ -10,7 +10,9 @@ struct editorConfig E;
 char *C_HL_extensions[] = { ".c", ".h", ".cpp", ".py", NULL };
 
 char *C_HL_keywords[] = {
-  "switch", "#include", "if", "while", "for", "break", "continue", "return", "else",
+  "switch", "#include", "#define", "#ifndef", "#ifdef", "if", "while", "for", "break", 
+  "continue", "return", "else", "#endif", "#if", "#else", "#elif", "#undef",
+  "#error", "#pragma", 
   "struct", "union", "typedef", "static", "enum", "class", "case",
   "auto", "const", "extern", "goto", "register", "sizeof", "asm",
   "namespace", "std", "using", "false", "true", "private", "public",
@@ -1239,7 +1241,11 @@ int main(int argc, char *argv[]) {
         editorRefreshScreen();
         editorProcessKeypress();
     }
+    
 
+    clear();
+
+    
 
     return 0;
 }
