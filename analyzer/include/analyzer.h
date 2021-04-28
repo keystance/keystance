@@ -1,6 +1,9 @@
 #ifndef ANALYZER_H
 #define ANALYZER_H
 
+
+
+/*TOKENS*/
 #include "./util.h"
 #include "../analyze.h"
 #include "../../errors/C/Cerrors.h"
@@ -55,13 +58,15 @@ void token_list_add(TokenList *list, Token *tok);
 Token* token_list_get(TokenList* list, int index);
 void token_list_destroy(TokenList* list);
 
-
+/*TOKENS END*/
 
 
 
 
 /*C*/
 Cerrors c_parser_start(TokenList *list, const char *source);
-Cerrors c_check_semicolon(const char *buf);
+Cerrors c_check_semicolon(const char *buf, const int line, int i);
+
+/*C END*/
 
 #endif //ANALYZER_H

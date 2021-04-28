@@ -60,13 +60,14 @@ Cerrors c_parser_start(TokenList* list, const char *source){
     lex[lexi] = '\0';
 
     /*CHECKS*/
-    if(c_check_semicolon(source) == NO_ERROR){
-      printf("Semicolons checked\n");
-    }
+
 
 
 
     if(source[i] == '\n'){
+      if(c_check_semicolon(source, line, i) == NO_ERROR){
+        printf("Semicolons checked\n");
+      }
       line++;
     }
     else if(source[i] == '\0'){
@@ -82,9 +83,17 @@ Cerrors c_parser_start(TokenList* list, const char *source){
 
 
 
-Cerrors c_check_semicolon(const char *buf){
+Cerrors c_check_semicolon(const char *buf, const int line, int i){
 
-  printf("SEMICOLON CHECKING\n");
+
+  if(buf[i] == '}' || buf[i] == '>' || buf[i] == ':'){
+    return NO_ERROR;
+  }
+  else if(buf[i] != ';'){
+    printf("\nERROR: No semicolon at line %d\n", line);
+    return SYNTAX_ERROR;
+  }
+
 
   return NO_ERROR;
 }
