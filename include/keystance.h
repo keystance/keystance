@@ -31,7 +31,6 @@
 #define FIND 'f'
 #define SAVE 's'
 #define QUIT 'q'
-#define HELP 'h'
 #define DEL_LINE_L 'd'
 #define DEL_LINE_R 'e'
 #define RUN_CMD 'r'
@@ -42,6 +41,7 @@
 #define LINE_UP 'k'
 #define LINE_DOWN 'j'
 #define CHAR_RIGHT 'l'
+#define CHAR_LEFT 'h'
 
 #define KEYSTANCE_VERSION "0.0.1"
 #define KEYSTANCE_TAB_STOP 4

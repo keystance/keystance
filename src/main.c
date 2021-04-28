@@ -1126,6 +1126,11 @@ void editorCharRight(){
 }
 
 
+void editorCharLeft(){
+    editorMoveCursor(ARROW_LEFT);
+}
+
+
 void editorProcessKeypress() {
     static int quit_times = KEYSTANCE_QUIT_TIMES;
     int c = editorReadKey();
@@ -1197,9 +1202,14 @@ void editorProcessKeypress() {
         case CTRL_KEY(CHAR_RIGHT):
             editorCharRight();
             break;
+    
+        case CTRL_KEY(CHAR_LEFT):
+            editorCharLeft();
+            break;
+
 
         case BACKSPACE:
-        case CTRL_KEY(HELP):
+        //case CTRL_KEY(HELP):
         case DEL_KEY:
             if (c == DEL_KEY) editorMoveCursor(ARROW_RIGHT);
             editorDelChar();
