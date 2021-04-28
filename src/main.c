@@ -1121,6 +1121,11 @@ void editorLineDown(){
 }
 
 
+void editorCharRight(){
+    editorMoveCursor(ARROW_RIGHT);
+}
+
+
 void editorProcessKeypress() {
     static int quit_times = KEYSTANCE_QUIT_TIMES;
     int c = editorReadKey();
@@ -1189,6 +1194,10 @@ void editorProcessKeypress() {
             editorLineDown();
             break;
 
+        case CTRL_KEY(CHAR_RIGHT):
+            editorCharRight();
+            break;
+
         case BACKSPACE:
         case CTRL_KEY(HELP):
         case DEL_KEY:
@@ -1218,7 +1227,7 @@ void editorProcessKeypress() {
             editorMoveCursor(c);
             break;
 
-        case CTRL_KEY('l'):
+        //case CTRL_KEY('l'):
         case '\x1b':
             break;
 
