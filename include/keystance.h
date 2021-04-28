@@ -49,7 +49,8 @@
 #define MOVE_WORD_BACK 'x'
 #define MOVE_START 't'
 #define MOVE_END 'c'
-
+#define PASTE 'p'
+#define COPY_R 'o'
 
 /*Editor related stuff*/
 #define KEYSTANCE_VERSION "0.2"

@@ -6,6 +6,9 @@ struct termios orig_termios;
 struct editorConfig E;
 
 
+char copied[256] = "works";
+
+
 //FILETYPES
 char *C_HL_extensions[] = { ".c", ".h", ".cpp", ".py", NULL };
 
@@ -1157,6 +1160,15 @@ void editorMoveEnd(int numrows){
 }
 
 
+void editorPaste(char *copied, int len, struct  abuf *ab){
+    if(copied == NULL){
+        die("copied");
+    }
+
+    abAppend(ab, copied, len);
+}
+
+
 void editorProcessKeypress() {
     static int quit_times = KEYSTANCE_QUIT_TIMES;
     int c = editorReadKey();
@@ -1247,6 +1259,11 @@ void editorProcessKeypress() {
 
         case CTRL_KEY(MOVE_END):
             editorMoveEnd(E.numrows);
+            break;
+
+        case CTRL_KEY(PASTE):
+            //int len = strlen(copied);
+            editorPaste(copied, strlen(copied),  &ab);
             break;
 
         case BACKSPACE:
