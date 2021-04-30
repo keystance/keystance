@@ -856,9 +856,9 @@ void editorScroll() {
 
 
 void editorDrawLineNumbers(struct abuf *ab){
-    uint32_t line = 0;
-    for(line; line < E.numrows; line++){
-        char *str_line = (char*)malloc(sizeof(char) * 20);
+    uint32_t line;
+    for(line = 0; line < E.numrows; line++){
+        char *str_line = (char*)malloc(sizeof(char) * 10);
         
         if(!str_line){
             die("allocation");
@@ -1145,48 +1145,48 @@ void editorMoveCursor(int key) {
 
 
 void editorDelLineLeft(erow *row){
-  for(int i = row->size; i > 0; i--){
-    editorDelChar();
-  }
+    for(int i = row->size; i > 0; i--){
+        editorDelChar();
+    }
 }
 
 
 void editorDelLineRight(erow *row){
-  for(int i = 0; i < row->size; i++){
-    editorDelChar();
-  }
+    for(int i = 0; i < row->size; i++){
+        editorDelChar();
+    }
 }
 
 
 void editorRunCmd(){
-  char *cmd = (char*)malloc(sizeof(char) * 100);
+    char *cmd = (char*)malloc(sizeof(char) * 100);
 
-  if(!cmd){
-    die("allocation");
-  }
+    if(!cmd){
+        die("allocation");
+    }
 
-  cmd = editorPrompt("cmd: ", NULL);
+    cmd = editorPrompt("cmd: ", NULL);
 
-  if(cmd == NULL){
-    editorSetStatusMessage("No command was entered");
-  }
-  else{
-    system(cmd);
-  }
+    if(cmd == NULL){
+        editorSetStatusMessage("No command was entered");
+    }
+    else{
+        system(cmd);
+    }
 }
 
 
 void editorInsertEnd(erow *row){
-  for(int i = 0; i < row->size; i++){
-    editorMoveCursor(ARROW_RIGHT);
-  }
+    for(int i = 0; i < row->size; i++){
+        editorMoveCursor(ARROW_RIGHT);
+    }
 }
 
 
 void editorInsertStart(erow *row){
-  for(int i = row->size; i > 0; i--){
-    editorMoveCursor(ARROW_LEFT);
-  }
+    for(int i = row->size; i > 0; i--){
+        editorMoveCursor(ARROW_LEFT);
+    }
 }
 
 
@@ -1218,7 +1218,7 @@ void editorMoveWordForward(erow *row){
 
 
 void editorMoveWordBack(erow *row){
-    for(int i = 0; i < row->chars[i] != ' '; i--){
+    for(int i = 0; row->chars[i] != ' '; i--){
         editorMoveCursor(ARROW_LEFT);
     }
 }
