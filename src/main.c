@@ -43,7 +43,7 @@ char copied[256] = "works";
 
 
 //FILETYPES
-char *C_HL_extensions[] = { ".c", ".h", ".cpp", ".py", NULL };
+char *C_HL_extensions[] = { ".c", ".h", ".cpp",  NULL };
 
 char *C_HL_keywords[] = {
   "switch", "#include", "#define", "#ifndef", "#ifdef", "if", "while", "for", "break", 
@@ -212,6 +212,11 @@ int is_separator(int c) {
 
 void editorUpdateSyntax(erow *row) {
     row->hl = realloc(row->hl, row->rsize);
+    
+    if(!row->hl){
+        die("reallocation");
+    }
+
     memset(row->hl, HL_NORMAL, row->rsize);
     if (E.syntax == NULL) return;
     char **keywords = E.syntax->keywords;
@@ -403,6 +408,10 @@ void editorUpdateRow(erow *row) {
     free(row->render);
     row->render = malloc(row->size + tabs*(KEYSTANCE_TAB_STOP - 1) + 1);
 
+    if(!row->render){
+        die("allocation");
+    }
+
     int idx = 0;
 
     for (j = 0; j < row->size; j++) {
@@ -428,12 +437,21 @@ void editorInsertRow(int at, char *s, size_t len) {
     if (at < 0 || at > E.numrows) return;
 
     E.row = realloc(E.row, sizeof(erow) * (E.numrows + 1));
+
+    if(!E.row){
+        die("reallocation");
+    }
+
     memmove(&E.row[at + 1], &E.row[at], sizeof(erow) * (E.numrows - at));
 
     for (int j = at + 1; j <= E.numrows; j++) E.row[j].idx++;
     E.row[at].idx = at;
     E.row[at].size = len;
     E.row[at].chars = malloc(len + 1);
+
+    if(!E.row[at].chars){
+        die("allocation");
+    }
 
     memcpy(E.row[at].chars, s, len);
     E.row[at].chars[len] = '\0';
@@ -450,9 +468,18 @@ void editorInsertRow(int at, char *s, size_t len) {
 
 void editorAppendRow(char *s, size_t len) {
     E.row = realloc(E.row, sizeof(erow) * (E.numrows + 1));
+
+    if(!E.row){
+        die("reallocation");
+    }
+
     int at = E.numrows;
     E.row[at].size = len;
     E.row[at].chars = malloc(len + 1);
+
+    if(!E.row[at].chars){
+        die("allocation");
+    }
 
     memcpy(E.row[at].chars, s, len);
     E.row[at].chars[len] = '\0';
@@ -488,6 +515,10 @@ void editorRowInsertChar(erow *row, int at, int c) {
     if (at < 0 || at > row->size) at = row->size;
     row->chars = realloc(row->chars, row->size + 2);
 
+    if(!row->chars){
+        die("reallocation");
+    }
+
     memmove(&row->chars[at + 1], &row->chars[at], row->size - at + 1);
     row->size++;
     row->chars[at] = c;
@@ -513,6 +544,11 @@ void editorRowDelChar(erow *row, int at) {
 
 void editorRowAppendString(erow *row, char *s, size_t len) {
     row->chars = realloc(row->chars, row->size + len + 1);
+    
+    if(!row->chars){
+        die("reallocation");
+    }
+
     memcpy(&row->chars[row->size], s, len);
 
     row->size += len;
@@ -587,6 +623,11 @@ char *editorRowsToString(int *buflen) {
 
     *buflen = totlen;
     char *buf = malloc(totlen);
+
+    if(!buf){
+        die("allocation");
+    }
+
     char *p = buf;
 
     for (j = 0; j < E.numrows; j++) {
@@ -767,7 +808,9 @@ struct abuf {
 void abAppend(struct abuf *ab, const char *s, int len) {
     char *new = realloc(ab->b, ab->len + len);
 
-    if (new == NULL) return;
+    if (!new){
+        die("reallocation");
+    };
 
     memcpy(&new[ab->len], s, len);
 
@@ -816,12 +859,13 @@ void editorDrawLineNumbers(struct abuf *ab){
     uint32_t line = 0;
     for(line; line < E.numrows; line++){
         char *str_line = (char*)malloc(sizeof(char) * 20);
+        
+        if(!str_line){
+            die("allocation");
+        }
+
         int str_line_len = strlen(str_line);
 
-
-        if(!str_line){
-            die("str_line");
-        }
 
         sprintf(str_line, "%d", line);
 
@@ -1118,8 +1162,7 @@ void editorRunCmd(){
   char *cmd = (char*)malloc(sizeof(char) * 100);
 
   if(!cmd){
-    printf("ERROR: Program Halted. Allocation error");
-    exit(1);
+    die("allocation");
   }
 
   cmd = editorPrompt("cmd: ", NULL);
@@ -1175,7 +1218,9 @@ void editorMoveWordForward(erow *row){
 
 
 void editorMoveWordBack(erow *row){
-
+    for(int i = 0; i < row->chars[i] != ' '; i--){
+        editorMoveCursor(ARROW_LEFT);
+    }
 }
 
 
@@ -1194,7 +1239,7 @@ void editorMoveEnd(int numrows){
 
 
 void editorPaste(char *copied, int len, struct  abuf *ab){
-    if(copied == NULL){
+    if(!copied){
         die("copied");
     }
 
