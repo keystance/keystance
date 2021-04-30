@@ -62,9 +62,9 @@
 #define clear() system("clear");
 
 //COLORS
-#define ML_COMMENT_COLOR 37
-#define KEYWORD1_COLOR 33
-#define KEYWORD2_COLOR 32
+#define ML_COMMENT_COLOR 35
+#define KEYWORD1_COLOR 35
+#define KEYWORD2_COLOR 33
 #define STRING_COLOR 34
 #define NUMBER_COLOR 31
 #define MATCH_COLOR 34
