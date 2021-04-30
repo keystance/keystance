@@ -13,6 +13,8 @@ echo
 echo
 
 
+make
+
 sudo cp ./kst /usr/local/bin
 echo "Intalling keystance editor..."
 echo
