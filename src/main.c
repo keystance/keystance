@@ -1,3 +1,36 @@
+/* __PROGRAM__ = KeyStance an emprooved version of the kilo text editor.
+ *
+ *
+ *  by:
+ * 
+ *
+ * __AUTHOR__ = Arin Grigoras.
+ *
+ *
+ *
+ * __LICENSE__ = MIT License.
+ *
+ *
+ *
+ * __MAIN__ = src/main.c.
+ *
+ *
+ * 
+ * 
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ * */
+
+
+
+
+
+
 #include "../include/keystance.h"
 
 
