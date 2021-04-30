@@ -23,5 +23,5 @@ marked with '?'
    * Ctrl + x -> moves the cursor backwards one word ?
    * Ctrl + t -> moves the cursor to the start of the file
    * Ctrl + c -> moves the cursor to the end of the file
-   * Ctrl + p -> paste
-   * Ctrl + o -> copy
+   * Ctrl + p -> paste ?
+   * Ctrl + o -> copy ?
