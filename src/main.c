@@ -2,7 +2,7 @@
  *
  *
  *  by:
- * 
+ *
  *
  * __AUTHOR__ = Arin Grigoras.
  *
@@ -15,7 +15,7 @@
  * __MAIN__ = src/main.c.
  *
  *
- * 
+ *
  * __VERSION__ = 0.3
  *
  *
@@ -46,9 +46,9 @@ char copied[256] = "works";
 char *C_HL_extensions[] = { ".c", ".h", ".cpp",  NULL };
 
 char *C_HL_keywords[] = {
-  "switch", "#include", "#define", "#ifndef", "#ifdef", "if", "while", "for", "break", 
+  "switch", "#include", "#define", "#ifndef", "#ifdef", "if", "while", "for", "break",
   "continue", "return", "else", "#endif", "#if", "#else", "#elif", "#undef",
-  "#error", "#pragma", 
+  "#error", "#pragma",
   "struct|", "union|", "typedef|", "static|", "enum|", "class|", "case|",
   "auto|", "const|", "extern|", "goto|", "register|", "sizeof|", "asm|",
   "namespace|", "std|", "using", "false|", "true|", "private|", "public|",
@@ -212,7 +212,7 @@ int is_separator(int c) {
 
 void editorUpdateSyntax(erow *row) {
     row->hl = realloc(row->hl, row->rsize);
-    
+
     if(!row->hl){
         die("reallocation");
     }
@@ -544,7 +544,7 @@ void editorRowDelChar(erow *row, int at) {
 
 void editorRowAppendString(erow *row, char *s, size_t len) {
     row->chars = realloc(row->chars, row->size + len + 1);
-    
+
     if(!row->chars){
         die("reallocation");
     }
@@ -859,7 +859,7 @@ void editorDrawLineNumbers(struct abuf *ab){
     uint32_t line;
     for(line = 0; line < E.numrows; line++){
         char *str_line = (char*)malloc(sizeof(char) * 10);
-        
+
         if(!str_line){
             die("allocation");
         }
@@ -1159,20 +1159,28 @@ void editorDelLineRight(erow *row){
 
 
 void editorRunCmd(){
-    char *cmd = (char*)malloc(sizeof(char) * 100);
+    char *cmd = editorPrompt("%s", NULL);
+    static int quit_times = KEYSTANCE_QUIT_TIMES;
 
-    if(!cmd){
-        die("allocation");
+    if(strcmp(cmd, ":q") == 0){
+      if (E.dirty && quit_times > 0) {
+          editorSetStatusMessage("WARNING! File has unsaved changes. "
+          "Press Ctrl-Q %d more times to quit.", quit_times);
+          quit_times--;
+          return;
+      }
+
+      write(STDOUT_FILENO, "\x1b[2J", 4);
+      write(STDOUT_FILENO, "\x1b[H", 3);
+
+      exit(0);
     }
 
-    cmd = editorPrompt("cmd: ", NULL);
-
-    if(cmd == NULL){
-        editorSetStatusMessage("No command was entered");
-    }
-    else{
+    else if(cmd[0] == '!'){
+        cmd[0] = ' ';
         system(cmd);
     }
+
 }
 
 
@@ -1318,7 +1326,7 @@ void editorProcessKeypress() {
         case CTRL_KEY(CHAR_RIGHT):
             editorCharRight();
             break;
-    
+
         case CTRL_KEY(CHAR_LEFT):
             editorCharLeft();
             break;
@@ -1444,11 +1452,11 @@ int main(int argc, char *argv[]) {
         editorRefreshScreen();
         editorProcessKeypress();
     }
-    
+
 
     clear();
 
-    
+
 
     return 0;
 }
