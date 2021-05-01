@@ -1158,6 +1158,15 @@ void editorDelLineRight(erow *row){
 }
 
 
+void editorSaveExit(){
+    editorSave();
+    write(STDOUT_FILENO, "\x1b[2J", 4);
+    write(STDOUT_FILENO, "\x1b[h", 3);
+
+    exit(0);
+}
+
+
 void editorRunCmd(){
     char *cmd = editorPrompt("%s", NULL);
     static int quit_times = KEYSTANCE_QUIT_TIMES;
@@ -1176,6 +1185,7 @@ void editorRunCmd(){
         exit(0);
     }
 
+
     else if(strcmp(cmd, ":q!") == 0){
         write(STDOUT_FILENO, "\x1b[2J", 4);
         write(STDOUT_FILENO, "\x1b[h", 3);
@@ -1183,9 +1193,20 @@ void editorRunCmd(){
         exit(0);
     }
 
+
     else if(strcmp(cmd, ":w") == 0){
-        editorSave();
+        editorSaveExit();
     }
+
+
+    else if(strcmp(cmd, ":wq") == 0){
+        editorSave();
+        write(STDOUT_FILENO, "\x1b[2J", 4);
+        write(STDOUT_FILENO, "\x1b[h", 3);
+
+        exit(0);
+    }
+
 
     else if(cmd[0] == '!'){
         cmd[0] = ' ';
