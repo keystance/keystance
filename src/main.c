@@ -1171,7 +1171,7 @@ void editorRunCmd(){
     char *cmd = editorPrompt("%s", NULL);
     static int quit_times = KEYSTANCE_QUIT_TIMES;
 
-    if(strcmp(cmd, ":q") == 0){
+    if(strcmp(cmd, CMD_EXIT) == 0){
         if (E.dirty && quit_times > 0) {
             editorSetStatusMessage("WARNING! File has unsaved changes. "
             "Press Ctrl-Q %d more times to quit.", quit_times);
@@ -1186,7 +1186,7 @@ void editorRunCmd(){
     }
 
 
-    else if(strcmp(cmd, ":q!") == 0){
+    else if(strcmp(cmd, CMD_FORCE_EXIT) == 0){
         write(STDOUT_FILENO, "\x1b[2J", 4);
         write(STDOUT_FILENO, "\x1b[h", 3);
 
@@ -1194,21 +1194,30 @@ void editorRunCmd(){
     }
 
 
-    else if(strcmp(cmd, ":w") == 0){
+    else if(strcmp(cmd, CMD_SAVE) == 0){
         editorSaveExit();
     }
 
 
-    else if(strcmp(cmd, ":wq") == 0){
+    else if(strcmp(cmd, CMD_SAVE_EXIT) == 0){
         editorSave();
         write(STDOUT_FILENO, "\x1b[2J", 4);
         write(STDOUT_FILENO, "\x1b[h", 3);
 
         exit(0);
     }
+    
+
+    else if(strcmp(cmd, CMD_FIND) == 0){
+        editorFind();    
+    }
+
+    /*else if(strcmp(cmd, ) == 0){
+        
+    }*/
 
 
-    else if(cmd[0] == '!'){
+    else if(cmd[0] == SYS_CMD_START){
         cmd[0] = ' ';
         system(cmd);
     }

@@ -51,6 +51,17 @@
 #define COPY_R 'o'
 
 
+/*EDITOR BUILTIN COMMANDS*/
+
+#define SYS_CMD_START '!'
+
+#define CMD_EXIT ":q"
+#define CMD_FORCE_EXIT ":q!"
+#define CMD_SAVE ":w"
+#define CMD_SAVE_EXIT ":wq"
+#define CMD_FIND ":f"
+
+
 #define clear() system("clear");
 
 
