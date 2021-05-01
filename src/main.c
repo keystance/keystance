@@ -56,7 +56,7 @@ char *C_HL_keywords[] = {
   "delete", "typeid", "typename", "operator", "explicit", "new",
   "static_cast", "catch", "class", "%s", "%d", "%i", "%f", "%ld", "%%",
   "int|", "long|", "double|", "float|", "char|", "unsigned|", "signed|", "short|",
-  "void|", "NULL",  NULL
+  "void|", "NULL", "\\n|", "\\t|", "\\b|", "\\x|", "\\a|",  NULL
 };
 
 
