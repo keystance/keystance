@@ -1163,22 +1163,32 @@ void editorRunCmd(){
     static int quit_times = KEYSTANCE_QUIT_TIMES;
 
     if(strcmp(cmd, ":q") == 0){
-      if (E.dirty && quit_times > 0) {
-          editorSetStatusMessage("WARNING! File has unsaved changes. "
-          "Press Ctrl-Q %d more times to quit.", quit_times);
-          quit_times--;
-          return;
-      }
+        if (E.dirty && quit_times > 0) {
+            editorSetStatusMessage("WARNING! File has unsaved changes. "
+            "Press Ctrl-Q %d more times to quit.", quit_times);
+            quit_times--;
+            return;
+        }
 
-      write(STDOUT_FILENO, "\x1b[2J", 4);
-      write(STDOUT_FILENO, "\x1b[H", 3);
+        write(STDOUT_FILENO, "\x1b[2J", 4);
+        write(STDOUT_FILENO, "\x1b[H", 3);
 
-      exit(0);
+        exit(0);
+    }
+
+    else if(strcmp(cmd, ":q!") == 0){
+        write(STDOUT_FILENO, "\x1b[2J", 4);
+        write(STDOUT_FILENO, "\x1b[h", 3);
+
+        exit(0);
     }
 
     else if(cmd[0] == '!'){
         cmd[0] = ' ';
         system(cmd);
+    }
+    else{
+        editorSetStatusMessage("ERROR! No such instruction '%s'", cmd);
     }
 
 }

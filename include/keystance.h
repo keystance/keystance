@@ -23,7 +23,6 @@
 #include <stdint.h>
 #include "./config.h"
 
-
 //DEFINES
 // The CTRL KEY for keyboard shortcuts
 #define CTRL_KEY(k) ((k) & 0x1f)
