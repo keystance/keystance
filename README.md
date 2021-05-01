@@ -2,6 +2,11 @@
  ## An open source text editor. Mostly inspired by the kilo text editor and vim. I could also say it is an enhanced version of kilo.
 
 
+ ### How to use
+   I would not suggest getting the binary file in the releases part of github because that doesn't have all of the files it needs to do some things.
+But I would suggest cloning the repo, compiling /ksti.c using gcc or make and then run the binary file you get.
+
+
  ### How to contribute
   You can open a pull request or an issue if you've found a bug or if you have an idea for a new feature.
 
