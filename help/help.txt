@@ -1,0 +1,27 @@
+    -HELP
+
+  keystance is a successor of the kilo text editor.
+
+
+  -KEYBOARD SHORTCUTS:
+    ctrl + f -> find
+    ctrl + s -> save
+    ctrl + q -> quit
+    ctrl + d -> deletes the line from the left of the cursor
+    ctrl + e -> deletes the line from the right of the cursor
+    ctrl + r -> runs a command
+    ctrl + k -> moves a line up
+    ctrl + j -> moves a line down
+    ctrl + l -> moves a character to the right
+    ctrl + h -> moves a character to the left
+    ctrl + t -> moves to the beggining of the file
+    ctrl + c -> moves to the end of the file
+    
+
+  -Commands that can be run using Ctrl + r:
+    :q -> quits
+    :q! -> forcefuly quits
+    :w -> saves without quiting
+    :wq -> saves and then quits
+    :f -> finds something
+  

@@ -60,7 +60,8 @@
 #define CMD_SAVE ":w"
 #define CMD_SAVE_EXIT ":wq"
 #define CMD_FIND ":f"
-
+#define CMD_HELP ":h"
+#define CMD_TERMINAL ":term"
 
 #define clear() system("clear");
 

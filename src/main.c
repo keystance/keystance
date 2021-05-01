@@ -213,9 +213,6 @@ int is_separator(int c) {
 void editorUpdateSyntax(erow *row) {
     row->hl = realloc(row->hl, row->rsize);
 
-    if(!row->hl){
-        die("reallocation");
-    }
 
     memset(row->hl, HL_NORMAL, row->rsize);
     if (E.syntax == NULL) return;
@@ -408,9 +405,6 @@ void editorUpdateRow(erow *row) {
     free(row->render);
     row->render = malloc(row->size + tabs*(KEYSTANCE_TAB_STOP - 1) + 1);
 
-    if(!row->render){
-        die("allocation");
-    }
 
     int idx = 0;
 
@@ -437,10 +431,6 @@ void editorInsertRow(int at, char *s, size_t len) {
     if (at < 0 || at > E.numrows) return;
 
     E.row = realloc(E.row, sizeof(erow) * (E.numrows + 1));
-
-    if(!E.row){
-        die("reallocation");
-    }
 
     memmove(&E.row[at + 1], &E.row[at], sizeof(erow) * (E.numrows - at));
 
@@ -469,17 +459,11 @@ void editorInsertRow(int at, char *s, size_t len) {
 void editorAppendRow(char *s, size_t len) {
     E.row = realloc(E.row, sizeof(erow) * (E.numrows + 1));
 
-    if(!E.row){
-        die("reallocation");
-    }
 
     int at = E.numrows;
     E.row[at].size = len;
     E.row[at].chars = malloc(len + 1);
 
-    if(!E.row[at].chars){
-        die("allocation");
-    }
 
     memcpy(E.row[at].chars, s, len);
     E.row[at].chars[len] = '\0';
@@ -515,9 +499,6 @@ void editorRowInsertChar(erow *row, int at, int c) {
     if (at < 0 || at > row->size) at = row->size;
     row->chars = realloc(row->chars, row->size + 2);
 
-    if(!row->chars){
-        die("reallocation");
-    }
 
     memmove(&row->chars[at + 1], &row->chars[at], row->size - at + 1);
     row->size++;
@@ -545,9 +526,6 @@ void editorRowDelChar(erow *row, int at) {
 void editorRowAppendString(erow *row, char *s, size_t len) {
     row->chars = realloc(row->chars, row->size + len + 1);
 
-    if(!row->chars){
-        die("reallocation");
-    }
 
     memcpy(&row->chars[row->size], s, len);
 
@@ -624,9 +602,6 @@ char *editorRowsToString(int *buflen) {
     *buflen = totlen;
     char *buf = malloc(totlen);
 
-    if(!buf){
-        die("allocation");
-    }
 
     char *p = buf;
 
@@ -647,8 +622,13 @@ void editorOpen(char *filename) {
 
     editorSelectSyntaxHighlight();
 
-    FILE *fp = fopen(filename, "r");
-    if (!fp) die("fopen");
+    FILE *fp;
+
+    fp = fopen(filename, "r");
+
+    if(!fp){
+        die("fp");
+    }
 
     char *line = NULL;
     size_t linecap = 0;
@@ -808,9 +788,6 @@ struct abuf {
 void abAppend(struct abuf *ab, const char *s, int len) {
     char *new = realloc(ab->b, ab->len + len);
 
-    if (!new){
-        die("reallocation");
-    };
 
     memcpy(&new[ab->len], s, len);
 
@@ -859,10 +836,6 @@ void editorDrawLineNumbers(struct abuf *ab){
     uint32_t line;
     for(line = 0; line < E.numrows; line++){
         char *str_line = (char*)malloc(sizeof(char) * 10);
-
-        if(!str_line){
-            die("allocation");
-        }
 
         int str_line_len = strlen(str_line);
 
@@ -1163,11 +1136,11 @@ void editorSaveExit(){
     write(STDOUT_FILENO, "\x1b[2J", 4);
     write(STDOUT_FILENO, "\x1b[h", 3);
 
-    exit(0);
+    //exit(0);
 }
 
 
-void editorRunCmd(){
+void editorRunCmd(char *filepath){
     char *cmd = editorPrompt("%s", NULL);
     static int quit_times = KEYSTANCE_QUIT_TIMES;
 
@@ -1205,6 +1178,31 @@ void editorRunCmd(){
         write(STDOUT_FILENO, "\x1b[h", 3);
 
         exit(0);
+    }
+
+    else if(strcmp(cmd, CMD_HELP) == 0){
+        editorSave();
+        write(STDOUT_FILENO, "\x1b[2J", 4);
+        write(STDOUT_FILENO, "\x1b[h", 3);
+
+        editorOpen("/kst/help.txt");
+    }
+
+
+    else if(strcmp(cmd, CMD_TERMINAL) == 0){
+        char *cmd = editorPrompt("command: %s", NULL);
+
+        if(!cmd){
+            die("cmd");
+        }
+
+        editorSaveExit();
+        clear();
+        system(cmd);
+        sleep(3);
+
+        editorOpen(filepath);
+
     }
     
 
@@ -1299,7 +1297,7 @@ void editorPaste(char *copied, int len, struct  abuf *ab){
 }
 
 
-void editorProcessKeypress() {
+void editorProcessKeypress(char *filepath) {
     static int quit_times = KEYSTANCE_QUIT_TIMES;
     int c = editorReadKey();
     struct abuf ab = ABUF_INIT;
@@ -1348,7 +1346,7 @@ void editorProcessKeypress() {
             break;
 
         case CTRL_KEY(RUN_CMD):
-            editorRunCmd();
+            editorRunCmd(filepath);
             break;
 
         case CTRL_KEY(INSERT_END):
@@ -1482,6 +1480,13 @@ int main(int argc, char *argv[]) {
     initEditor();
 
     if (argc >= 2) {
+        FILE *fptr;
+
+        fptr = fopen(argv[1], "r");
+
+        if(!fptr){
+            die("fptr");
+        }
         editorOpen(argv[1]);
     }
 
@@ -1494,7 +1499,7 @@ int main(int argc, char *argv[]) {
 
     while (true) {
         editorRefreshScreen();
-        editorProcessKeypress();
+        editorProcessKeypress(argv[1]);
     }
 
 
