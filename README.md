@@ -10,6 +10,7 @@
   In the src folder there is the main.c file where all the code for the actual text editor is located
   In the analyzer folder is the source code for the syntax error analyzer.
   In the errors folder are all the errors the analyzer can throw at you.
+  And finally in the config.h file is where all of the configuration settings for the text editor are located. You can change them to your will.
 
  ### What I want to implement
   * Syntax error checking in C.
@@ -17,6 +18,7 @@
 
  ### What I'm currently workin on
   * Syntax error checking in C
+  * More keyboard shortcuts.
 
  ### What is keystance built with ?
   * NeoVim
