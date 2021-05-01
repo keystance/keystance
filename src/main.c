@@ -1183,6 +1183,10 @@ void editorRunCmd(){
         exit(0);
     }
 
+    else if(strcmp(cmd, ":w") == 0){
+        editorSave();
+    }
+
     else if(cmd[0] == '!'){
         cmd[0] = ' ';
         system(cmd);
