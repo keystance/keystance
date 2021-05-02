@@ -43,7 +43,7 @@ char copied[256] = "works";
 
 
 //FILETYPES
-char *C_HL_extensions[] = { ".c", ".h", ".cpp",  NULL };
+char *C_HL_extensions[] = { ".c", ".h", ".cpp", ".py",  NULL };
 
 char *C_HL_keywords[] = {
   "switch", "#include", "#define", "#ifndef", "#ifdef", "if", "while", "for", "break",
@@ -56,7 +56,11 @@ char *C_HL_keywords[] = {
   "delete", "typeid", "typename", "operator", "explicit", "new",
   "static_cast", "catch", "class", "%s", "%d", "%i", "%f", "%ld", "%%",
   "int|", "long|", "double|", "float|", "char|", "unsigned|", "signed|", "short|",
-  "void|", "NULL", "\n", "\t", "\b",  NULL
+  "void|", "NULL", "\n", "\t", "\b", 
+  "and", "as", "assert", "def", "del", "elif", "else", "except", "False", "True",
+  "finally", "from", "import", "global", "in", "is", "lambda", "not", "or", "pass",
+  "raise", "with", "yield", "print|", "input|", 
+  NULL
 };
 
 
