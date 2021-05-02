@@ -16,7 +16,7 @@
  *
  *
  *
- * __VERSION__ = 0.3
+ * __VERSION__ = 0.4
  *
  *
  *
@@ -56,7 +56,7 @@ char *C_HL_keywords[] = {
   "delete", "typeid", "typename", "operator", "explicit", "new",
   "static_cast", "catch", "class", "%s", "%d", "%i", "%f", "%ld", "%%",
   "int|", "long|", "double|", "float|", "char|", "unsigned|", "signed|", "short|",
-  "void|", "NULL", "\\n|", "\\t|", "\\b|", "\\x|", "\\a|",  NULL
+  "void|", "NULL", "\n", "\t", "\b",  NULL
 };
 
 
@@ -1151,7 +1151,7 @@ void editorMoveCenter(int numrows, int rowoff){
        else{
             editorMoveCursor(ARROW_DOWN);
        }
-   } 
+   }
 }
 
 
@@ -1224,14 +1224,14 @@ void editorRunCmd(char *filepath){
 
 
 
-    
+
 
     else if(strcmp(cmd, CMD_FIND) == 0){
-        editorFind();    
+        editorFind();
     }
 
     /*else if(strcmp(cmd, ) == 0){
-        
+
     }*/
 
 
