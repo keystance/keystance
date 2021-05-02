@@ -49,6 +49,8 @@
 #define MOVE_END 'c'
 #define PASTE 'p'
 #define COPY_R 'o'
+#define MOVE_CENTER 'g'
+
 
 
 /*EDITOR BUILTIN COMMANDS*/

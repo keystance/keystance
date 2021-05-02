@@ -1140,6 +1140,21 @@ void editorSaveExit(){
 }
 
 
+void editorMoveCenter(int numrows, int rowoff){
+   for(int i = 0; i < numrows / 2; i++){
+       if(rowoff > numrows / 2){
+            editorMoveCursor(ARROW_UP);
+       }
+       else if(rowoff == numrows / 2){
+            return;
+       }
+       else{
+            editorMoveCursor(ARROW_DOWN);
+       }
+   } 
+}
+
+
 void editorRunCmd(char *filepath){
     char *cmd = editorPrompt("%s", NULL);
     static int quit_times = KEYSTANCE_QUIT_TIMES;
@@ -1204,6 +1219,11 @@ void editorRunCmd(char *filepath){
         editorOpen(filepath);
 
     }
+
+
+
+
+
     
 
     else if(strcmp(cmd, CMD_FIND) == 0){
@@ -1392,6 +1412,10 @@ void editorProcessKeypress(char *filepath) {
         case CTRL_KEY(PASTE):
             //int len = strlen(copied);
             editorPaste(copied, strlen(copied),  &ab);
+            break;
+
+        case CTRL_KEY(MOVE_CENTER):
+            editorMoveCenter(E.numrows, E.rowoff);
             break;
 
         case BACKSPACE:
