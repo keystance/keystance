@@ -57,9 +57,9 @@ char *C_HL_keywords[] = {
   "static_cast", "catch", "class", "%s", "%d", "%i", "%f", "%ld", "%%",
   "int|", "long|", "double|", "float|", "char|", "unsigned|", "signed|", "short|",
   "void|", "NULL", "\n", "\t", "\b", 
-  "and", "as", "assert", "def", "del", "elif", "else", "except", "False", "True",
+  "and", "as", "assert", "def", "del", "elif", "else", "except", "False|", "True|",
   "finally", "from", "import", "global", "in", "is", "lambda", "not", "or", "pass",
-  "raise", "with", "yield", "print|", "input|", 
+  "raise", "with", "yield", "print|", "input|", "str|", "int|",
   NULL
 };
 
