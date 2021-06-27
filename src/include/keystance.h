@@ -38,7 +38,7 @@
 #define INSERT_END 'a'
 //#define PAGE_UP 'p'
 #define SPLIT 'n'
-#define SHOW_L_NUMBER 'w'
+#define SHOW_L_NUMBER 'b'
 #define LINE_UP 'k'
 #define LINE_DOWN 'j'
 #define CHAR_RIGHT 'l'
@@ -64,6 +64,9 @@
 #define CMD_FIND ":f"
 #define CMD_HELP ":h"
 #define CMD_TERMINAL ":term"
+#define CMD_OPEN_NEW_FILE ":onf"
+
+
 
 #define clear() system("clear");
 

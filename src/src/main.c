@@ -1178,6 +1178,7 @@ void editorRunCmd(char *filepath){
     }
 
 
+
     else if(strcmp(cmd, CMD_FORCE_EXIT) == 0){
         write(STDOUT_FILENO, "\x1b[2J", 4);
         write(STDOUT_FILENO, "\x1b[h", 3);
@@ -1186,9 +1187,11 @@ void editorRunCmd(char *filepath){
     }
 
 
+
     else if(strcmp(cmd, CMD_SAVE) == 0){
         editorSaveExit();
     }
+
 
 
     else if(strcmp(cmd, CMD_SAVE_EXIT) == 0){
@@ -1199,6 +1202,8 @@ void editorRunCmd(char *filepath){
         exit(0);
     }
 
+
+
     else if(strcmp(cmd, CMD_HELP) == 0){
         editorSave();
         write(STDOUT_FILENO, "\x1b[2J", 4);
@@ -1206,6 +1211,7 @@ void editorRunCmd(char *filepath){
 
         editorOpen("/kst/help.txt");
     }
+
 
 
     else if(strcmp(cmd, CMD_TERMINAL) == 0){
@@ -1227,22 +1233,42 @@ void editorRunCmd(char *filepath){
 
 
 
-
-
-
     else if(strcmp(cmd, CMD_FIND) == 0){
         editorFind();
     }
+
+
+
+    else if(strcmp(cmd, CMD_OPEN_NEW_FILE) == 0){
+        char *cmd = (char*)malloc(sizeof(char) * 4);
+
+        if(!cmd){
+            die("cmd");
+        }
+
+        strcpy(cmd, "kst");
+
+
+        system(cmd);
+    }
+
+
 
     /*else if(strcmp(cmd, ) == 0){
 
     }*/
 
 
+
     else if(cmd[0] == SYS_CMD_START){
         cmd[0] = ' ';
         system(cmd);
     }
+
+
+
+
+
     else{
         editorSetStatusMessage("ERROR! No such instruction '%s'", cmd);
     }
