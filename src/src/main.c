@@ -1528,44 +1528,28 @@ void initEditor() {
 
 
 void help(){
-    FILE *fptr;
     
-
-    fptr = fopen("kst-help.txt", "w");
-
-    if(!fptr){
-        die("fptr");
-    }
-
-
-    fprintf(fptr, "KEYSTANCE\n\n\n");
-    fprintf(fptr, "\t**KeyStance is an enhanced version of kilo**\n\n");
-    fprintf(fptr, "COMMANDS:\n");
-    fprintf(fptr, "\tFIND: %c\n\tSAVE: %c\n\tQUIT: %c\n\tRUN COMMANDS: %c\n\t....", FIND, SAVE, QUIT, RUN_CMD);
-
+    printf("KEYSTANCE\n\n\n");
+    printf("\tAn enhanced version of kilo\n\n\n");
+    printf("COMMANDS:\n");
+    printf("\tFIND: %c\n\tSAVE: %c\n\tQUIT: %c\n\tRUN COMMANDS: %c\n", FIND, SAVE, QUIT, RUN_CMD);
     
-    system("kst ./kst-help.txt");
-
-
-    fclose(fptr);
-
-}
+} 
 
 
 
 int main(int argc, char *argv[]) {
 
+    if(strcmp(argv[1], "--help") == 0){
+        help();
+    }
+    
 
     enableRawMode();
 
     initEditor();
 
     if (argc >= 2) {
-
-        if(strcmp(argv[1], "--help") == 0){
-            help();
-        }
-
 
         FILE *fptr;
 
