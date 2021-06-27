@@ -1,0 +1,11 @@
+KEYSTANCE
+
+
+	**KeyStance is an enhanced version of kilo**
+
+COMMANDS:
+	FIND: f
+	SAVE: s
+	QUIT: q
+	RUN COMMANDS: r
+	....
