@@ -1265,6 +1265,45 @@ void editorRunCmd(char *filepath){
     }
 
 
+    else if(strcmp(cmd, CMD_RUN_C_FILE) == 0){
+        char *cmd = (char*)malloc(sizeof(char) * 50);
+        char *flname = (char*)malloc(sizeof(char) * 43);
+        char *fltype = (char*)malloc(sizeof(char) * 5);
+
+        if(!cmd){
+            die("cmd");
+        }
+
+
+        if(!flname){
+            die("flname");
+        }
+
+
+        if(!fltype){
+            die("fltype");
+        }
+
+
+
+        strcpy(fltype, E.syntax->filetype);
+
+
+
+        if(strcmp(fltype, ".c") == 0){
+            strcpy(flname, E.filename);
+        }
+
+        else{
+            editorSetStatusMessage("The file you are currently editing isn't a .c file");        
+        }
+
+        
+
+
+    }
+
+
 
     /*else if(strcmp(cmd, ) == 0){
 

@@ -65,7 +65,7 @@
 #define CMD_HELP ":h"
 #define CMD_TERMINAL ":term"
 #define CMD_OPEN_NEW_FILE ":onf"
-
+#define CMD_RUN_C_FILE ":rcf"
 
 
 #define clear() system("clear");
