@@ -43,7 +43,7 @@ char copied[256] = "works";
 
 
 //FILETYPES
-char *C_HL_extensions[] = { ".c", ".h", ".cpp", ".py", ".js", ".cs", ".java",  NULL };
+char *C_HL_extensions[] = { ".c", ".h", ".cpp", ".py", ".js", ".cs", ".java", ".rust",  NULL };
 
 char *C_HL_keywords[] = {
   "switch", "#include", "#define", "#ifndef", "#ifdef", "if", "while", "for", "break",
@@ -68,6 +68,10 @@ char *C_HL_keywords[] = {
   "ushort|", "sbyte|", "delegate", "sealed", "sizeof", "stackalloc",
   "module", "native", "requires", "strictfp", "synchronized",
   "throws", "transient",
+  "fn", "impl", "loop", "match", "mod", "move", "mut", "pub", "ref",
+  "self", "Self", "trait", "unsafe", "use",
+  "where", "dyn", "become", "box", "final", "macro",
+  "priv", "",
   NULL
 };
 
