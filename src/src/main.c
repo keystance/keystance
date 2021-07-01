@@ -43,7 +43,7 @@ char copied[256] = "works";
 
 
 //FILETYPES
-char *C_HL_extensions[] = { ".c", ".h", ".cpp", ".py", ".js", ".cs", ".java", ".rust",  NULL };
+char *C_HL_extensions[] = { ".c", ".h", ".cpp", ".py", ".js", ".cs", ".java", ".rust", ".swift",  NULL };
 
 char *C_HL_keywords[] = {
   "switch", "#include", "#define", "#ifndef", "#ifdef", "if", "while", "for", "break",
@@ -71,7 +71,15 @@ char *C_HL_keywords[] = {
   "fn", "impl", "loop", "match", "mod", "move", "mut", "pub", "ref",
   "self", "Self", "trait", "unsafe", "use",
   "where", "dyn", "become", "box", "final", "macro",
-  "priv", "",
+  "priv", "deinit", "Enum", "extension", "Func", "Init", 
+  "internal", "Let", "protocol", "subscript",
+  "typealias", "fallthrough", "dynamicType",
+  "nil", "_COLUMN_", "_FILE_", "_FUNCTION_", "_LINE_",
+  "associativity", "convenience", "didSet", "final",
+  "get", "infix", "inout", "lazy", "left",
+  "mutating", "none", "nonmutating", "optional",
+  "postfix", "precedence", "Protocol", "right",
+  "Type", "unowned", "weak", "willSet",
   NULL
 };
 
