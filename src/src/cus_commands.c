@@ -41,7 +41,8 @@ void cus_cmd_google(){
 
 
 
-    strcpy(cmd, "firefox https://google.com/search?q=");
+    strcpy(cmd, browser);
+    strcat(cmd, " https://google.com/search?q=");
     strcat(cmd, search);
 
 

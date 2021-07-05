@@ -17,6 +17,16 @@
 #define DEFAULT_COLOR 37
 
 
+
+
+
+//USER SPECIFIC (change these to whatever you're using)
+#define browser "firefox"
+
+
+
+
+
 //Change this to true if you want line numbers to appear when you run the program.
 
 #define LINE_NUMBERS false
