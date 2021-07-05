@@ -82,6 +82,14 @@ char *C_HL_keywords[] = {
   "Type", "unowned", "weak", "willSet",
   "<<|", ">>|", "cout", "endl",
   "System|", "Console|",
+  "stdio.h", "conio.h", "assert.h",
+  "ctype.h", "cocale.h", "math.h",
+  "setjmp.h", "signal.h", "stdarg.h",
+  "stdlib.h", "string.h", "time.h",
+  "complex.h", "stdalign.h", "errno.h", 
+  "locale.h", "stdatomic.h", "stdnoreturn.h",
+  "uchar.h", "fenv.h", "wchar.h",
+  "tgmath.h", "stdarg.h", "stdbool.h",
   NULL
 };
 
