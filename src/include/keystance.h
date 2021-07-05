@@ -22,6 +22,7 @@
 #include <unistd.h>
 #include <stdint.h>
 #include "./config.h"
+#include "../custom/commands/cus_commands.h"
 
 //DEFINES
 // The CTRL KEY for keyboard shortcuts
