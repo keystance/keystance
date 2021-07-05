@@ -13,7 +13,20 @@ void cus_cmd_time(){
 
 
 void cus_cmd_weather(){
-    
+    char *cmd = (char*)malloc(sizeof(char) * 50);
+
+    if(!cmd){
+        editorSetStatusMessage("%sERROR!%s 'cmd' variable ran out of memory", red(), white());
+
+        exit(1);
+    }
+
+
+    strcpy(cmd, browser);
+    strcat(cmd, " https://google.com/search?q=");
+    strcat(cmd, "weather");
+
+    system(cmd);
 
 
 }
@@ -25,11 +38,15 @@ void cus_cmd_google(){
 
     if(!search){
         editorSetStatusMessage("%sERROR!%s 'search' variable ran out of memory", red(), white());
+
+        exit(1);
     }
 
 
     if(!cmd){
         editorSetStatusMessage("%SERROR!%s 'cmd' variable ran out of memory", red(), white());
+    
+        exit(1);
     }
 
 
