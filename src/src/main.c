@@ -579,11 +579,18 @@ void editorInsertChar(int c) {
 
     if(c == (int)'('){
         editorRowInsertChar(&E.row[E.cy], E.cx, ')');
-        E.cx++;
     }
 
     if(c == (int)'"'){
         editorRowInsertChar(&E.row[E.cy], E.cx, '"');
+    }
+
+    if(c == (int)'{'){
+        editorRowInsertChar(&E.row[E.cy], E.cx, '}');
+    }
+
+    if(c == (int)'<'){
+        editorRowInsertChar(&E.row[E.cy], E.cx, '>');
     }
 }
 
