@@ -22,6 +22,7 @@
 
 //USER SPECIFIC (change these to whatever you're using)
 #define browser "firefox"
+#define music_playlist " https://www.youtube.com/watch?v=QsNLZqfalCs&list=PL34S8OSpIqm0SvQdla1fyjJ9-ck_GF65u"
 
 
 

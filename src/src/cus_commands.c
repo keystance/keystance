@@ -44,7 +44,7 @@ void cus_cmd_google(){
 
 
     if(!cmd){
-        editorSetStatusMessage("%SERROR!%s 'cmd' variable ran out of memory", red(), white());
+        editorSetStatusMessage("%sERROR!%s 'cmd' variable ran out of memory", red(), white());
     
         exit(1);
     }
@@ -79,7 +79,7 @@ void cus_cmd_wiki(){
 
 
     if(!cmd){
-        editorSetStatusMessage("%SERROR!%s 'cmd' variable ran out of memory", red(), white());
+        editorSetStatusMessage("%sERROR!%s 'cmd' variable ran out of memory", red(), white());
     
         exit(1);
     }
@@ -116,7 +116,7 @@ void cus_cmd_so(){
 
 
     if(!cmd){
-        editorSetStatusMessage("%SERROR!%s 'cmd' variable ran out of memory", red(), white());
+        editorSetStatusMessage("%sERROR!%s 'cmd' variable ran out of memory", red(), white());
     
         exit(1);
     }
@@ -134,6 +134,24 @@ void cus_cmd_so(){
     strcat(cmd, " http://stackoverflow.com/search?q=");
     strcat(cmd, search);
 
+
+    system(cmd);
+}
+
+
+
+void cus_cmd_music(){
+    char *cmd = (char*)malloc(sizeof(char) * 50);
+
+    if(!cmd){
+        editorSetStatusMessage("%sERROR!%s variable 'cmd' ran out of memory", red(), white());
+        
+        exit(1);
+    }
+
+
+    strcpy(cmd, browser);
+    strcat(cmd, music_playlist);
 
     system(cmd);
 }

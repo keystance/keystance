@@ -24,6 +24,7 @@
 #define CUSTOM_CMD_GOOGLE "$google"
 #define CUSTOM_CMD_WIKI "$wiki"
 #define CUSTOM_CMD_SO "$so" //stack overflow
+#define CUSTOM_CMD_MUSIC "$music"
 
 
 
@@ -36,6 +37,7 @@ void cus_cmd_weather();
 void cus_cmd_google();
 void cus_cmd_wiki();
 void cus_cmd_so();
+void cus_cmd_music();
 
 
 
