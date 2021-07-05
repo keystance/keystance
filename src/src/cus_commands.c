@@ -68,5 +68,35 @@ void cus_cmd_google(){
 
 
 void cus_cmd_wiki(){
+    char *cmd = (char*)malloc(sizeof(char) * 100);
+    char *search = editorPrompt("search: %s", NULL);
 
+    if(!search){
+        editorSetStatusMessage("%sERROR!%s 'search' variable ran out of memory", red(), white());
+
+        exit(1);
+    }
+
+
+    if(!cmd){
+        editorSetStatusMessage("%SERROR!%s 'cmd' variable ran out of memory", red(), white());
+    
+        exit(1);
+    }
+
+
+    for(int i = 0; i < strlen(search); i++){
+        if(search[i] == ' '){
+            search[i] = '_';
+        }
+    }
+
+
+
+    strcpy(cmd, browser);
+    strcat(cmd, " https://en.wikipedia.org/wiki/");
+    strcat(cmd, search);
+
+
+    system(cmd);
 }
