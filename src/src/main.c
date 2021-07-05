@@ -81,7 +81,7 @@ char *C_HL_keywords[] = {
   "postfix", "precedence", "Protocol", "right",
   "Type", "unowned", "weak", "willSet",
   "<<|", ">>|", "cout", "endl",
-  "System", "Console",
+  "System|", "Console|",
   NULL
 };
 
@@ -571,8 +571,16 @@ void editorInsertChar(int c) {
         editorInsertRow(E.numrows, "", 0);
     }
 
+    
+
     editorRowInsertChar(&E.row[E.cy], E.cx, c);
     E.cx++;
+    
+
+    if(c == (int)'('){
+        editorRowInsertChar(&E.row[E.cy], E.cx, ')');
+        E.cx++;
+    }
 }
 
 
