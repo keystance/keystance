@@ -52,6 +52,7 @@
 #define PASTE 'p'
 #define COPY_R 'o'
 #define MOVE_CENTER 'g'
+#define MOVE_TO_LINE_NUMBER 'y'
 
 
 

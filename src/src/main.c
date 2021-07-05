@@ -1482,6 +1482,21 @@ void editorPaste(char *copied, int len, struct  abuf *ab){
 }
 
 
+void editorMoveToLineNumber(){
+    char *str_line = editorPrompt("line: ", NULL);
+
+    
+    if(!str_line){
+        die("line");
+    }
+
+
+    int line = atoi(str_line);
+
+    
+}
+
+
 void editorProcessKeypress(char *filepath) {
     static int quit_times = KEYSTANCE_QUIT_TIMES;
     int c = editorReadKey();
@@ -1581,6 +1596,10 @@ void editorProcessKeypress(char *filepath) {
 
         case CTRL_KEY(MOVE_CENTER):
             editorMoveCenter(E.numrows, E.rowoff);
+            break;
+
+        case CTRL_KEY(MOVE_TO_LINE_NUMBER):
+            editorMoveToLineNumber();
             break;
 
         case BACKSPACE:
