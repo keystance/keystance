@@ -712,7 +712,7 @@ void editorSave() {
     }
 
     free(buf);
-    editorSetStatusMessage("Can't save! I/O error: %s", strerror(errno));
+    editorSetStatusMessage("%sCan't save%s! I/O error: %s", red(), white(), strerror(errno));
 }
 
 
@@ -1358,7 +1358,7 @@ void editorRunCmd(char *filepath){
 
 
     else{
-        editorSetStatusMessage("ERROR! No such instruction '%s'", cmd);
+        editorSetStatusMessage("%sERROR!%s No such instruction '%s'", red(), white(), cmd);
     }
 
 }

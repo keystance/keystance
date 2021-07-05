@@ -23,6 +23,7 @@
 #include <stdint.h>
 #include "./config.h"
 #include "../custom/commands/cus_commands.h"
+#include "./colors.h"
 
 //DEFINES
 // The CTRL KEY for keyboard shortcuts
