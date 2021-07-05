@@ -80,6 +80,8 @@ char *C_HL_keywords[] = {
   "mutating", "none", "nonmutating", "optional",
   "postfix", "precedence", "Protocol", "right",
   "Type", "unowned", "weak", "willSet",
+  "<<|", ">>|", "cout", "endl",
+  "System", "Console",
   NULL
 };
 
