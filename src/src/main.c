@@ -575,11 +575,15 @@ void editorInsertChar(int c) {
 
     editorRowInsertChar(&E.row[E.cy], E.cx, c);
     E.cx++;
-    
+
 
     if(c == (int)'('){
         editorRowInsertChar(&E.row[E.cy], E.cx, ')');
         E.cx++;
+    }
+
+    if(c == (int)'"'){
+        editorRowInsertChar(&E.row[E.cy], E.cx, '"');
     }
 }
 
