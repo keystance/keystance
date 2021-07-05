@@ -1337,18 +1337,28 @@ void editorRunCmd(char *filepath){
         }
 
 
-        if(strcmp(cmd, CUSTOM_CMD_WEATHER) == 0){
+        else if(strcmp(cmd, CUSTOM_CMD_WEATHER) == 0){
             cus_cmd_weather();
         }
 
 
-        if(strcmp(cmd, CUSTOM_CMD_GOOGLE) == 0){
+        else if(strcmp(cmd, CUSTOM_CMD_GOOGLE) == 0){
             cus_cmd_google();
         }
 
 
-        if(strcmp(cmd, CUSTOM_CMD_WIKI) == 0){
+        else if(strcmp(cmd, CUSTOM_CMD_WIKI) == 0){
             cus_cmd_wiki();
+        }
+
+        
+        else if(strcmp(cmd, CUSTOM_CMD_SO) == 0){
+            cus_cmd_so();
+        }
+
+
+        else{
+            editorSetStatusMessage("%sERROR!%s no such instruction '%s'", cmd);
         }
 
 
