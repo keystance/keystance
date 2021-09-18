@@ -4,11 +4,11 @@
  *  by:
  *
  *
- * __AUTHOR__ = Arin Grigoras.
+ ! __AUTHOR__ = Arin Grigoras.
  *
  *
  *
- * __LICENSE__ = MIT License.
+ ! __LICENSE__ = MIT License.
  *
  *
  *
