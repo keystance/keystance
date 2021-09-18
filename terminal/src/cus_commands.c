@@ -1,6 +1,14 @@
 #include "../custom/commands/cus_commands.h"
 
 
+
+
+
+
+
+
+
+
 void cus_cmd_time(){
     time_t rawtime;
     struct tm * timeinfo;
@@ -18,7 +26,7 @@ void cus_cmd_weather(){
     if(!cmd){
         editorSetStatusMessage("%sERROR!%s 'cmd' variable ran out of memory", red(), white());
 
-        exit(1);
+        
     }
 
 
@@ -27,6 +35,9 @@ void cus_cmd_weather(){
     strcat(cmd, "weather");
 
     system(cmd);
+
+
+    free(cmd);
 
 
 }
@@ -39,14 +50,14 @@ void cus_cmd_google(){
     if(!search){
         editorSetStatusMessage("%sERROR!%s 'search' variable ran out of memory", red(), white());
 
-        exit(1);
+        
     }
 
 
     if(!cmd){
         editorSetStatusMessage("%sERROR!%s 'cmd' variable ran out of memory", red(), white());
     
-        exit(1);
+        
     }
 
 
@@ -64,6 +75,10 @@ void cus_cmd_google(){
 
 
     system(cmd);
+    
+
+    free(cmd);
+    free(search);
 }
 
 
@@ -74,14 +89,14 @@ void cus_cmd_wiki(){
     if(!search){
         editorSetStatusMessage("%sERROR!%s 'search' variable ran out of memory", red(), white());
 
-        exit(1);
+        
     }
 
 
     if(!cmd){
         editorSetStatusMessage("%sERROR!%s 'cmd' variable ran out of memory", red(), white());
     
-        exit(1);
+      
     }
 
 
@@ -99,6 +114,10 @@ void cus_cmd_wiki(){
 
 
     system(cmd);
+
+
+    free(cmd);
+    free(search);
 }
 
 
@@ -111,14 +130,14 @@ void cus_cmd_so(){
     if(!search){
         editorSetStatusMessage("%sERROR!%s 'search' variable ran out of memory", red(), white());
 
-        exit(1);
+
     }
 
 
     if(!cmd){
         editorSetStatusMessage("%sERROR!%s 'cmd' variable ran out of memory", red(), white());
     
-        exit(1);
+
     }
 
 
@@ -136,6 +155,10 @@ void cus_cmd_so(){
 
 
     system(cmd);
+
+
+    free(cmd);
+    free(search);
 }
 
 
@@ -146,7 +169,7 @@ void cus_cmd_music(){
     if(!cmd){
         editorSetStatusMessage("%sERROR!%s variable 'cmd' ran out of memory", red(), white());
         
-        exit(1);
+
     }
 
 
@@ -154,4 +177,62 @@ void cus_cmd_music(){
     strcat(cmd, music_playlist);
 
     system(cmd);
+
+
+    free(cmd);
+}
+
+
+
+void cus_cmd_open_cur_dir(){
+    char *current_dir = (char*)malloc(sizeof(char) * 50);
+
+    if(!current_dir){
+        current_dir = (char*)realloc(current_dir, 100);
+
+        open_nautilus_cur_dir(current_dir);
+    }
+
+    else{
+        open_nautilus_cur_dir(current_dir);
+    }
+
+}
+
+
+
+
+
+
+
+
+
+/* * FUNCTIONS TO BE USED IN OTHER FUNCTIONS*/
+
+
+void open_nautilus_cur_dir(char* current_dir){
+    if(getcwd(current_dir, sizeof(current_dir)) != NULL){
+
+
+        char *cmd = (char*)malloc(sizeof(char) * 20);
+
+
+        if(!cmd){
+            editorSetStatusMessage("%sERROR!%s 'cmd' variable ran out of memory", red(), white());
+        }
+
+        strcpy(cmd, "nautilus ");
+        strcat(cmd, current_dir);
+
+
+        system(cmd);
+
+
+        free(cmd);
+        free(current_dir);
+    }
+
+    else{
+        editorSetStatusMessage("%sERROR!%S Couldn't open current directory", red(), white());
+    }
 }

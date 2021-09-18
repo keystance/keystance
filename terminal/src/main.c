@@ -1366,47 +1366,45 @@ void editorRunCmd(char *filepath){
 
 
 
-    else if(cmd[0] == SYS_CUSTOM_CMD_START){
 
 
-        if(strcmp(cmd, CUSTOM_CMD_TIME) == 0){
-            cus_cmd_time();
-        }
-
-
-        else if(strcmp(cmd, CUSTOM_CMD_WEATHER) == 0){
-            cus_cmd_weather();
-        }
-
-
-        else if(strcmp(cmd, CUSTOM_CMD_GOOGLE) == 0){
-            cus_cmd_google();
-        }
-
-
-        else if(strcmp(cmd, CUSTOM_CMD_WIKI) == 0){
-            cus_cmd_wiki();
-        }
-
-        
-        else if(strcmp(cmd, CUSTOM_CMD_SO) == 0){
-            cus_cmd_so();
-        }
-
-
-        else{
-            editorSetStatusMessage("%sERROR!%s no such instruction '%s'", cmd);
-        }
-
-
+    if(strcmp(cmd, CUSTOM_CMD_TIME) == 0){
+        cus_cmd_time();
     }
 
 
+    else if(strcmp(cmd, CUSTOM_CMD_WEATHER) == 0){
+        cus_cmd_weather();
+    }
+
+
+    else if(strcmp(cmd, CUSTOM_CMD_GOOGLE) == 0){
+        cus_cmd_google();
+    }
+
+
+    else if(strcmp(cmd, CUSTOM_CMD_WIKI) == 0){
+        cus_cmd_wiki();
+    }
+
+    
+    else if(strcmp(cmd, CUSTOM_CMD_SO) == 0){
+        cus_cmd_so();
+    }
+
+
+    else if(strcmp(cmd, CUSTOM_CMD_OPEN_FILES_IN_CUR_DIR) == 0){
+        cus_cmd_open_cur_dir();
+    }
 
 
     else{
-        editorSetStatusMessage("%sERROR!%s No such instruction '%s'", red(), white(), cmd);
+        editorSetStatusMessage("%sERROR!%s no such instruction '%s'", cmd);
     }
+
+
+
+
 
 }
 

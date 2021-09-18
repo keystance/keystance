@@ -25,6 +25,7 @@
 #define CUSTOM_CMD_WIKI "$wiki"
 #define CUSTOM_CMD_SO "$so" //stack overflow
 #define CUSTOM_CMD_MUSIC "$music"
+#define CUSTOM_CMD_OPEN_FILES_IN_CUR_DIR "$curdir"
 
 
 
@@ -38,6 +39,10 @@ void cus_cmd_google();
 void cus_cmd_wiki();
 void cus_cmd_so();
 void cus_cmd_music();
+
+//current directory
+void cus_cmd_open_cur_dir();
+void open_nautilus_cur_dir();
 
 
 
