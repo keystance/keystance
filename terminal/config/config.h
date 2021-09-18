@@ -28,9 +28,8 @@
 
 
 
-//Change this to true if you want line numbers to appear when you run the program.
-
-#define LINE_NUMBERS false
+#define LINE_NUMBERS false  //Change this to true if you want line numbers to appear when you run the program.
+#define CUSTOM_CMDS true    //Default is set to true
 
 
 #endif //CONFIG_H

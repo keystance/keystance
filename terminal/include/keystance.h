@@ -21,7 +21,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <stdint.h>
-#include "./config.h"
+#include "../config/config.h"
 #include "../custom/commands/cus_commands.h"
 #include "./colors.h"
 
