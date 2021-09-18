@@ -16,7 +16,7 @@
  *
  *
  *
- * __VERSION__ = 0.4
+ * __VERSION__ = 1.0
  *
  *
  *
@@ -1299,13 +1299,30 @@ void editorRunCmd(char *filepath){
 
 
     else if(strcmp(cmd, CMD_OPEN_NEW_FILE) == 0){
-        char *cmd = (char*)malloc(sizeof(char) * 4);
+        char *cmd = (char*)malloc(sizeof(char) * 51);
+        char *filename = (char*)malloc(sizeof(char) * 46);
 
-        if(!cmd){
-            die("cmd");
+        if(!filename){
+            editorSetStatusMessage("%sERROR!%s we have ran out of memory", red(), white());
         }
 
-        strcpy(cmd, "kst");
+        filename = editorPrompt("filename: ", NULL);
+
+
+        if(!filename){
+            die("filename");
+        }
+        
+
+
+        if(!cmd){
+            editorSetStatusMessage("%sERROR!%s we have ran out of memory", red(), white());
+        }
+
+        
+
+        strcpy(cmd, "kst ");
+        strcat(cmd, filename);
 
 
         system(cmd);
