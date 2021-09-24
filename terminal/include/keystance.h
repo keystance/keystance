@@ -69,6 +69,8 @@
 #define CMD_TERMINAL ":term"
 #define CMD_OPEN_NEW_FILE ":onf"
 #define CMD_RUN_C_FILE ":rcf"
+#define CMD_REPLACE_WORD ":rpw"
+
 
 
 #define clear() system("clear");

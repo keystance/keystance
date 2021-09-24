@@ -1369,6 +1369,25 @@ void editorRunCmd(char *filepath){
 
 
 
+    else if(strcmp(cmd, CMD_REPLACE_WORD) == 0){
+        char *word = editorPrompt("Word: ", editorFindCallback);
+
+
+        if(!word){
+            die("word");
+        }
+
+
+        else{
+            printf("%s\n", word);
+        }
+
+
+        
+    }
+
+
+
     /*else if(strcmp(cmd, ) == 0){
 
     }*/
