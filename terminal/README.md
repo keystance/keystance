@@ -26,13 +26,8 @@ But I would suggest cloning the repo, compiling /ksti.c using gcc or make and th
   * More keyboard shortcuts.
 
  ### What is keystance built with ?
-  * NeoVim
-  * Vim
-  * Atom
-  * VsCode
-  * KeyStance
   * C
-  * gcc
+
 
  ### Why should you use keystance ?
   I'm going to be real here. There isn't any reason to use keystance at all because there are already a lot of text editors out there.
