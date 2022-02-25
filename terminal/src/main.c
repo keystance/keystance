@@ -1,4 +1,4 @@
-/* __PROGRAM__ = KeyStance an emprooved version of the kilo text editor.
+/* __PROGRAM__ = KeyStance an emproved version of the kilo text editor.
  *
  *
  *  by:
@@ -43,7 +43,7 @@ char copied[256] = "works";
 
 
 //FILETYPES
-char *C_HL_extensions[] = { ".c", ".h", ".cpp", ".py", ".js", ".cs", ".java", ".rust", ".swift",  NULL };
+char *C_HL_extensions[] = { ".c", ".h", ".hpp", ".cpp", ".py", ".js", ".cs", ".java", ".rust", ".swift",  NULL };
 
 char *C_HL_keywords[] = {
   "switch", "#include", "#define", "#ifndef", "#ifdef", "if", "while", "for", "break",
@@ -91,11 +91,11 @@ char *C_HL_keywords[] = {
   "uchar.h|", "fenv.h|", "wchar.h|",
   "tgmath.h|", "stdarg.h|", "stdbool.h|",
   "algorithm|", "array|", "bitset|", "cassert|", 
-  "cctype|", "cerrno|", "cfloat|", "ciso646|",
-  "climits|", "clocale|", "cmath|", "complex|", "csetjmp|",
-  "csignal|", "cstdarg|", "cstddef|", "cstdio|", "cstdlib|",
-  "cstring|", "ctime|", "cwchar|", "cwctype|", "deque|", "exception|",
-  "fstream|", "functional|", "iomapip|", "ios|", "iosfwd|", "iostream|",
+  "cctype|", "<cerrno>|", "<cfloat>|", "ciso646|",
+  "<climits>|", "<clocale>|", "<cmath>|", "complex|", "csetjmp|",
+  "<csignal>|", "<cstdarg>|", "<cstddef>|", "<cstdio>|", "<cstdlib>|",
+  "<cstring>|", "ctime|", "cwchar|", "cwctype|", "deque|", "exception|",
+  "<fstream>|", "functional|", "iomapip|", "<ios>|", "iosfwd|", "<iostream>|",
   "istream|", "iterator|", "limits|", "list|", "locale|", "map|", "memory|",
   "new|", "numeric|", "ostream|", "queue|", "random|", "regex|", "set|", "sstream|",
   "stack|", "stdexcept|", "streambuf|", "string|", "strstream|", "tuple|", "typeinfo|",

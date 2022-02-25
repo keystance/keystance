@@ -2,13 +2,7 @@
 
 
 
-
-
-
-
-
-
-
+//prints out what the current time is
 void cus_cmd_time(){
     time_t rawtime;
     struct tm * timeinfo;
@@ -20,6 +14,7 @@ void cus_cmd_time(){
 }
 
 
+//opens your default browser and searches for the weather
 void cus_cmd_weather(){
     char *cmd = (char*)malloc(sizeof(char) * 50);
 
@@ -42,7 +37,7 @@ void cus_cmd_weather(){
 
 }
 
-
+//Takes input as what you want to google and searches it
 void cus_cmd_google(){
     char *cmd = (char*)malloc(sizeof(char) * 100);
     char *search = editorPrompt("search: %s", NULL);
@@ -82,6 +77,7 @@ void cus_cmd_google(){
 }
 
 
+//Opens wikipedia
 void cus_cmd_wiki(){
     char *cmd = (char*)malloc(sizeof(char) * 100);
     char *search = editorPrompt("search: %s", NULL);
@@ -121,7 +117,7 @@ void cus_cmd_wiki(){
 }
 
 
-
+//Opens stackoverflow
 void cus_cmd_so(){
 
     char *cmd = (char*)malloc(sizeof(char) * 100);
@@ -162,7 +158,7 @@ void cus_cmd_so(){
 }
 
 
-
+//opens your music playlist on default browser
 void cus_cmd_music(){
     char *cmd = (char*)malloc(sizeof(char) * 50);
 
