@@ -148,9 +148,6 @@ void enableRawMode(){
 }
 
 
-
-
-
 int editorReadKey() {
     int nread;
     char c;

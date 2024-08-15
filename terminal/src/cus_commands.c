@@ -160,7 +160,7 @@ void cus_cmd_so(){
 
 //opens your music playlist on default browser
 void cus_cmd_music(){
-    char *cmd = (char*)malloc(sizeof(char) * 50);
+    char *cmd = (char*)malloc(sizeof(char) * 100);
 
     if(!cmd){
         editorSetStatusMessage("%sERROR!%s variable 'cmd' ran out of memory", red(), white());
@@ -187,10 +187,12 @@ void cus_cmd_open_cur_dir(){
         current_dir = (char*)realloc(current_dir, 100);
 
         open_nautilus_cur_dir(current_dir);
+        free(current_dir);
     }
 
     else{
         open_nautilus_cur_dir(current_dir);
+        free(current_dir);
     }
 
 }
